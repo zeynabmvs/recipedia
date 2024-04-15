@@ -41,13 +41,13 @@ function Details() {
     />
   ) : (
     <div className="flex gap-8">
-      <div className="basis-1/2 flex justify-center items-center">
+      <div className="basis-1/3 flex justify-center">
         <img
           src={recipeDetail?.strMealThumb}
           className="block w-full rounded-lg"
         ></img>
       </div>
-      <div className="basis-1/2 flex flex-col gap-4">
+      <div className="basis-2/3 flex flex-col gap-4">
         <h1 className="text-2xl">{recipeDetail?.strMeal}</h1>
         <h3 className="font-bold ">Ingredients</h3>
         <ul>

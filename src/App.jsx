@@ -6,6 +6,7 @@ import Category from "./pages/Category";
 import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             404
           </Route>
         </Routes>
+      <Footer/>
       </main>
     </GlobalStateProvider>
   );
