@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Card from "../components/Card";
 import { GlobalStateContext } from "../contexts/GlobalState";
 import CardList from "../components/CardList";
 function Home() {

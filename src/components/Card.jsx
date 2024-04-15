@@ -6,7 +6,7 @@ function Card({recipe}) {
         </div>
         <div className="p-4 ">
         <h1 className="truncate block mb-3">{recipe?.strMeal}</h1>
-        <Link to={`/recipe/${recipe?.idMeal}`} className="tracking-wider">View details</Link>
+        <Link to={`/recipe/${recipe?.idMeal}`} className="tracking-wider link">View details</Link>
         </div>
     </div> );
 }

@@ -13,18 +13,20 @@ function GlobalStateProvider({ children }) {
     console.log(seachParam);
   }
   async function fetchRecipes() {
-    console.log("fetchRecipes")
+    console.log("fetchRecipes");
     try {
       setLoading(true);
 
-      const response = await fetch("https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian");
+      const response = await fetch(
+        "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian"
+      );
       if (response.ok) {
         const data = await response.json();
-        setRecipes(data.meals)
+        setRecipes(data.meals);
         setLoading(false);
         setError("");
       } else {
-        throw new Error(response.statusText)
+        throw new Error(response.statusText);
       }
     } catch (error) {
       setError(error);
