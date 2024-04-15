@@ -4,8 +4,7 @@ import { GlobalStateContext } from "../contexts/GlobalState";
 
 function Favorites() {
   const { favorites } = useContext(GlobalStateContext);
-  console.log(favorites)
-  
+
   return (
     <>
       <h1 className="mb-6">Favorites</h1>

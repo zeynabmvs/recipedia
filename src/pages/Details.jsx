@@ -13,7 +13,6 @@ function Details() {
 
   const ingrediants = [];
   const recipeDetail = data?.meals[0];
-  console.log(recipeDetail);
 
   for (let i = 1; i <= 20; i++) {
     let keyIngredient = "strIngredient" + String(i);
