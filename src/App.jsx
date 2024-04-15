@@ -7,6 +7,7 @@ import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import Footer from "./components/Footer"
+import Area from "./pages/Area"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             Favorites
           </Route>
           <Route path="/category/:name" element={<Category />}></Route>
+          <Route path="/area/:name" element={<Area />}></Route>
           <Route path="*" element={<NotFound />}>
             404
           </Route>

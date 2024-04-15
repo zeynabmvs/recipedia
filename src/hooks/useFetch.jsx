@@ -25,5 +25,5 @@ export default function useFetch(url) {
     fetchData();
   }, [url]);
 
-  return [data, error, pending];
+  return {data, error, pending};
 }

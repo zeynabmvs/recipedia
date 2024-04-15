@@ -1,13 +1,37 @@
 import { createContext, useEffect, useState } from "react";
+import { indexof } from "stylis";
 
 export const GlobalStateContext = createContext(null);
 
 function GlobalStateProvider({ children }) {
   const [seachParam, setSerachParam] = useState("");
+  const [favorites, setFavorites] = useState([])
+  
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+
+  function handleFavorite(currentItem) {
+    console.log("******************", currentItem)
+    let cpyFavorites = [...favorites]
+    const index = cpyFavorites.findIndex(item => item.idMeal === currentItem.idMeal)
+    console.log(index)
+    if (index === -1) {
+      cpyFavorites.push(currentItem)
+    } else {
+      cpyFavorites.splice(index)
+    }
+    console.log(cpyFavorites)
+    setFavorites(cpyFavorites)
+
+    console.log(favorites)
+  }
+
+  function isFavorite(id) {
+    const index = favorites.findIndex(item => item.idMeal === id)
+    return index === -1 ? false : true
+  }
   function handleSearch() {
     //TODO: add search later on
     console.log(seachParam);
@@ -40,7 +64,7 @@ function GlobalStateProvider({ children }) {
 
   return (
     <GlobalStateContext.Provider
-      value={{ seachParam, setSerachParam, handleSearch, recipes }}
+      value={{ seachParam, setSerachParam, handleSearch, recipes, loading, error , isFavorite, handleFavorite, favorites}} 
     >
       {children}
     </GlobalStateContext.Provider>

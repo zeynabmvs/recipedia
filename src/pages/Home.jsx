@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { GlobalStateContext } from "../contexts/GlobalState";
 import CardList from "../components/CardList";
+import { GlobalStateContext } from "../contexts/GlobalState";
+
 function Home() {
-  const { recipes } = useContext(GlobalStateContext);
+  const { recipes, loading, error } = useContext(GlobalStateContext);
 
   return (
     <>
       <h1>Home</h1>
-      <CardList recipes={recipes} />
+      <CardList recipes={recipes} loading={loading} error={error} />
     </>
   );
 }
