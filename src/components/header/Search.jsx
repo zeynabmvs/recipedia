@@ -2,23 +2,18 @@ import { useContext } from "react";
 import { GlobalStateContext } from "../../contexts/GlobalState";
 
 function Search() {
-  const { seachParam, setSerachParam, handleSearch } = useContext(GlobalStateContext);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    handleSearch()
-  }
+  const { searchParam, setSearchParam, handleSearch } = useContext(GlobalStateContext);
 
   function handleChange(e) {
-    setSerachParam(e.target.value);
+    setSearchParam(e.target.value);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e) => handleSearch(e)}>
       <input
         type="text"
         placeholder="Search for..."
-        value={seachParam}
+        value={searchParam}
         onChange={(e) => handleChange(e)}
         className="rounded-md border border-slate-200 p-4 w-80"
       ></input>

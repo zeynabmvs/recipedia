@@ -1,19 +1,22 @@
 import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 import Header from "./components/header/Header";
 import GlobalStateProvider from "./contexts/GlobalState";
 import NotFound from "./pages/404";
+import Area from "./pages/Area";
 import Category from "./pages/Category";
 import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
-import Footer from "./components/Footer"
-import Area from "./pages/Area"
 
 function App() {
   return (
     <GlobalStateProvider>
       <Header />
-      <main className="container justify-center items-center">
+      <main className="container flex">
+        <Sidebar />
+        <div className="basis-4/5">
         <Routes>
           <Route path="/" element={<Home />}>
             Home
@@ -30,8 +33,11 @@ function App() {
             404
           </Route>
         </Routes>
-      <Footer/>
+        </div>
+        
       </main>
+      <Footer />
+
     </GlobalStateProvider>
   );
 }

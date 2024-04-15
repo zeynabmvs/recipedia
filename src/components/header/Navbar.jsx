@@ -1,15 +1,22 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-
-function Navbar(){
-    return(     
-        <nav>
-            <ul className="flex gap-4">
-                <li><Link to="/" className="link">Home</Link></li>
-                <li><Link to="/favorites" className="link">Favorites</Link></li>
-            </ul>
-        </nav>
-    )
+function Navbar() {
+  return (
+    <nav>
+      <ul className="flex gap-4">
+        <li>
+          <NavLink to="/" className="link">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/favorites" className="link">
+            Favorites
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
-export default Navbar; 
+export default Navbar;
