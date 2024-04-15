@@ -4,8 +4,8 @@ import Search from "./Search";
 function Header() {
   return (
     <header>
-      <div className="container flex justify-between">
-        <h1>FoodRecipes</h1>
+      <div className="container flex justify-between h-40 items-center">
+        <h1 className="text-2xl font-extrabold">FoodRecipes</h1>
         <Search />
         <Navbar />
       </div>
