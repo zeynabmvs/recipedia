@@ -1,39 +1,38 @@
-import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/header/Header";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Area from "./components/Area";
+import Category from "./components/Category";
+import Details from "./components/Details";
+import Favorites from "./components/Favorites";
+import Home from "./components/Home";
+import Main from "./components/Main";
+import NotFound from "./components/NotFound";
+import WithSidebarLayout from "./components/WithSidebarLayout";
 import GlobalStateProvider from "./contexts/GlobalState";
-import NotFound from "./pages/404";
-import Area from "./pages/Area";
-import Category from "./pages/Category";
-import Details from "./pages/Details";
-import Favorites from "./pages/Favorites";
-import Home from "./pages/Home";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Main />}>
+      <Route path="" element={<WithSidebarLayout />}>
+        <Route path="" element={<Home />} />
+        <Route path="category/:name" element={<Category />} />
+        <Route path="area/:name" element={<Area />} />
+      </Route>
+      <Route path="/recipe/:id" element={<Details />} />
+      <Route path="/favorites" element={<Favorites />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
+  )
+);
 
 function App() {
   return (
     <GlobalStateProvider>
-      <Header />
-      <main className="container flex">
-        <Sidebar />
-        <div className="basis-4/5">
-          <Routes>
-            <Route path="/" index element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/category/:name" element={<Category />} />
-            <Route path="/area/:name" element={<Area />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          
-          <Routes>
-            {/* Without Sidebar */}
-            <Route path="/recipe/:id" element={<Details />} />
-            <Route path="/favorites" element={<Favorites />} />
-          </Routes>
-
-        </div>
-      </main>
-      <Footer />
+      <RouterProvider router={router}></RouterProvider>
     </GlobalStateProvider>
   );
 }

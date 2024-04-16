@@ -5,7 +5,7 @@ function Navbar() {
     <nav>
       <ul className="flex gap-4">
         <li>
-          <NavLink to="/home" className={({ isActive }) => isActive ? 'text-primary link': 'link'}>
+          <NavLink to="/" className={({ isActive }) => isActive ? 'text-primary link': 'link'}>
             Home
           </NavLink>
         </li>

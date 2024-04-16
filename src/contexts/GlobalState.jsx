@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { useNavigate } from "react-router-dom";
 
 export const GlobalStateContext = createContext(null);
 
 function GlobalStateProvider({ children }) {
-  const [searchParam, setSearchParam] = useState("");
+  const [searchParamm, setSearchParamm] = useState("");
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
 
   const [recipes, setRecipes] = useState([]);
@@ -30,26 +29,26 @@ function GlobalStateProvider({ children }) {
     const index = favorites.findIndex((item) => item.idMeal === id);
     return index === -1 ? false : true;
   }
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   async function handleSearch(e){
     e.preventDefault();
     try {
       const res = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchParam}`
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchParamm}`
       );
 
       const data = await res.json();
       if (data?.meals) {
         setRecipes(data?.meals);
         setLoading(false);
-        setSearchParam("");
-        navigate('/')
+        setSearchParamm("");
+        // navigate('/')
       }
     } catch (e) {
       console.log(e);
       setLoading(false);
-      setSearchParam("");
+      setSearchParamm("");
     }
 
     
@@ -83,8 +82,8 @@ function GlobalStateProvider({ children }) {
   return (
     <GlobalStateContext.Provider
       value={{
-        searchParam,
-        setSearchParam,
+        searchParamm,
+        setSearchParamm,
         handleSearch,
         recipes,
         loading,

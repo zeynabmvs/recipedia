@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { GlobalStateContext } from "../../contexts/GlobalState";
 
 function Search() {
-  const { searchParam, setSearchParam, handleSearch } = useContext(GlobalStateContext);
+  const { searchParamm, setSearchParamm, handleSearch } = useContext(GlobalStateContext);
 
   function handleChange(e) {
-    setSearchParam(e.target.value);
+    setSearchParamm(e.target.value);
   }
 
   return (
@@ -13,7 +13,7 @@ function Search() {
       <input
         type="text"
         placeholder="Search for..."
-        value={searchParam}
+        value={searchParamm}
         onChange={(e) => handleChange(e)}
         className="rounded-md border border-slate-200 p-4 w-80"
       ></input>

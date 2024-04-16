@@ -1,6 +1,5 @@
-import { ThreeDots } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
-import CardList from "../components/CardList";
+import CardList from "./CardList";
 import useFetch from "../hooks/useFetch";
 
 function Category() {
