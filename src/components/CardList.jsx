@@ -3,7 +3,7 @@ import Error from "../components/Error";
 import Card from "./Card";
 
 function CardList({ recipes, loading=false, error="" }) {
-  console.log(recipes)
+  // console.log(recipes)
   
   if (loading) {
     return (

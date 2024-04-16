@@ -5,12 +5,12 @@ function Navbar() {
     <nav>
       <ul className="flex gap-4">
         <li>
-          <NavLink to="/" className="link">
+          <NavLink to="/home" className={({ isActive }) => isActive ? 'text-primary link': 'link'}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/favorites" className="link">
+          <NavLink to="/favorites" className={({ isActive }) => isActive ? 'text-primary link': 'link'}>
             Favorites
           </NavLink>
         </li>

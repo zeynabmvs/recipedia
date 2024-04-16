@@ -17,27 +17,23 @@ function App() {
       <main className="container flex">
         <Sidebar />
         <div className="basis-4/5">
-        <Routes>
-          <Route path="/" element={<Home />}>
-            Home
-          </Route>
-          <Route path="/recipe/:id" element={<Details />}>
-            Recipe
-          </Route>
-          <Route path="/favorites" element={<Favorites />}>
-            Favorites
-          </Route>
-          <Route path="/category/:name" element={<Category />}></Route>
-          <Route path="/area/:name" element={<Area />}></Route>
-          <Route path="*" element={<NotFound />}>
-            404
-          </Route>
-        </Routes>
+          <Routes>
+            <Route path="/" index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/category/:name" element={<Category />} />
+            <Route path="/area/:name" element={<Area />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          
+          <Routes>
+            {/* Without Sidebar */}
+            <Route path="/recipe/:id" element={<Details />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+
         </div>
-        
       </main>
       <Footer />
-
     </GlobalStateProvider>
   );
 }
