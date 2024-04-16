@@ -13,7 +13,7 @@ function Sidebar() {
         {error && "Error fetching categories"}
         {data && data.meals && data.meals.length > 0
           ? data?.meals.map((item, index) => {
-              return <li key={index}><Link to={`/category/${item?.strCategory}`}>{item?.strCategory}</Link></li>;
+              return <li key={index} className="p-1.5"><Link to={`/category/${item?.strCategory}`} className="link">{item?.strCategory}</Link></li>;
             })
           : null}
       </ul>
