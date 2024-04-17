@@ -38,7 +38,7 @@ function Details() {
       visible={true}
       height="80"
       width="80"
-      color="#4fa94d"
+      color="#E8751A"
       radius="9"
       ariaLabel="three-dots-loading"
       wrapperStyle={{}}

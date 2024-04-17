@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CardList from "./CardList";
+import CardsList from "./CardsList";
 import { GlobalStateContext } from "../contexts/GlobalState";
 
 function Favorites() {
@@ -8,7 +8,7 @@ function Favorites() {
   return (
     <>
       <h1 className="mb-6">Favorites</h1>
-      <CardList recipes={favorites} />
+      <CardsList list={favorites} />
     </>
   );
 }

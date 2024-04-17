@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import CardList from "./CardList";
+import CardsList from "../components/CardsList";
 import useFetch from "../hooks/useFetch";
 
 function Category() {
@@ -12,7 +12,7 @@ function Category() {
   return (
     <>
       <h1 className="mb-6">Result for category: {name}</h1>
-      <CardList recipes={recipeList} loading={pending} error={error} />
+      <CardsList list={recipeList} error={error} loading={pending} />
 
     </>
   );

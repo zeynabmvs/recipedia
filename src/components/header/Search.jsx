@@ -1,21 +1,34 @@
-import { useContext } from "react";
-import { GlobalStateContext } from "../../contexts/GlobalState";
+import { useRef } from 'react';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 
-function Search() {
-  const { searchParamm, setSearchParamm, handleSearch } = useContext(GlobalStateContext);
+const Search = () => {
+  const searchInputRef = useRef();
+  const navigate = useNavigate();
 
-  function handleChange(e) {
-    setSearchParamm(e.target.value);
-  }
+  const onSearchHandler = (e) => {
+    e.preventDefault();
+
+    const query = {
+      s: searchInputRef.current.value
+    }
+    const queryString = createSearchParams(query);
+    
+    // empty search input
+    searchInputRef.current.value = ""
+
+    navigate({
+      pathname: '/',
+      search: `?${queryString}`
+    })
+  };
 
   return (
-    <form onSubmit={(e) => handleSearch(e)}>
+    <form onSubmit={onSearchHandler}>
       <input
         type="text"
         placeholder="Search for..."
-        value={searchParamm}
-        onChange={(e) => handleChange(e)}
         className="rounded-md border border-slate-200 p-4 w-80"
+        ref={searchInputRef}
       ></input>
     </form>
   );

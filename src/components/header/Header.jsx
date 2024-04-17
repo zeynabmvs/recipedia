@@ -9,7 +9,7 @@ function Header() {
         <h1 className="text-2xl font-extrabold">
           <Link to="/">Food<span className="text-primary">Recipes</span></Link>
         </h1>
-        {/* <Search /> */}
+        <Search />
         <Navbar />
       </div>
     </header>

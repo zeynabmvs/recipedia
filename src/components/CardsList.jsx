@@ -1,16 +1,17 @@
 import { ThreeDots } from "react-loader-spinner";
-import Error from "./Error";
 import Card from "./Card";
+import Error from "./Error";
 
-function CardList({ recipes, loading=false, error="" }) {
-
-  if (loading) {
+function CardsList({ list, error = "", loading = false }) {
+    console.log(list)
+  
+    if (loading || !list) {
     return (
       <ThreeDots
         visible={true}
         height="80"
         width="80"
-        color="#4fa94d"
+        color="#E8751A"
         radius="9"
         ariaLabel="three-dots-loading"
         wrapperStyle={{}}
@@ -19,13 +20,13 @@ function CardList({ recipes, loading=false, error="" }) {
     );
   }
 
-  if (error) {
-    return <Error />;
+  if (error && error !=="") {
+    return <Error message={error} />;
   }
 
-  return recipes && recipes.length > 0 ? (
-    <div className="recipes-list grid grid-cols-4 gap-6">
-      {recipes.map((item, index) => {
+  return Array.isArray(list) && list.length > 0 ? (
+    <div className="grid grid-cols-4 gap-6">
+      {list.map((item, index) => {
         return <Card key={index} recipe={item}></Card>;
       })}
     </div>
@@ -34,4 +35,4 @@ function CardList({ recipes, loading=false, error="" }) {
   );
 }
 
-export default CardList;
+export default CardsList;

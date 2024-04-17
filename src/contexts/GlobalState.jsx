@@ -4,9 +4,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 export const GlobalStateContext = createContext(null);
 
 function GlobalStateProvider({ children }) {
-  const [searchParamm, setSearchParamm] = useState("");
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
-
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -29,32 +27,9 @@ function GlobalStateProvider({ children }) {
     const index = favorites.findIndex((item) => item.idMeal === id);
     return index === -1 ? false : true;
   }
-  // const navigate = useNavigate()
-
-  async function handleSearch(e){
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchParamm}`
-      );
-
-      const data = await res.json();
-      if (data?.meals) {
-        setRecipes(data?.meals);
-        setLoading(false);
-        setSearchParamm("");
-        // navigate('/')
-      }
-    } catch (e) {
-      console.log(e);
-      setLoading(false);
-      setSearchParamm("");
-    }
-
-    
-  }
 
   async function fetchRecipes() {
+    console.log("fetch for home");
     try {
       setLoading(true);
 
@@ -82,12 +57,12 @@ function GlobalStateProvider({ children }) {
   return (
     <GlobalStateContext.Provider
       value={{
-        searchParamm,
-        setSearchParamm,
-        handleSearch,
         recipes,
+        setRecipes,
         loading,
+        setLoading,
         error,
+        setError,
         isFavorite,
         handleFavorite,
         favorites,
@@ -97,5 +72,4 @@ function GlobalStateProvider({ children }) {
     </GlobalStateContext.Provider>
   );
 }
-
 export default GlobalStateProvider;
