@@ -11,6 +11,22 @@ function GlobalStateProvider({ children }) {
   const [area, setArea] = useState("");
   const [category, setCategory] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, SetPostsPerPage] = useState(8);
+
+  function handlePagination(currentPage) {
+    setCurrentPage(currentPage);
+  }
+
+  const getPageRecipes = () =>{
+    const indexOfLastPost = currentPage * postsPerPage;
+
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    console.log(indexOfLastPost)
+    console.log(indexOfFirstPost)
+    return recipes?.slice(indexOfFirstPost, indexOfLastPost);
+  }
+
   function handleFavorite(currentItem) {
     let cpyFavorites = [...favorites];
     const index = cpyFavorites.findIndex(
@@ -61,7 +77,6 @@ function GlobalStateProvider({ children }) {
     );
   }, [area]);
 
-
   useEffect(() => {
     console.log("fetch based on category: ", category);
     fetchRecipes(
@@ -69,6 +84,10 @@ function GlobalStateProvider({ children }) {
     );
   }, [category]);
 
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [recipes]);
 
   return (
     <GlobalStateContext.Provider
@@ -83,7 +102,11 @@ function GlobalStateProvider({ children }) {
         isFavorite,
         handleFavorite,
         favorites,
-        setCategory
+        setCategory,
+        handlePagination,
+        currentPage,
+        getPageRecipes,
+        postsPerPage,
       }}
     >
       {children}

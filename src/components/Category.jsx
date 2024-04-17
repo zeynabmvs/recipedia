@@ -1,20 +1,28 @@
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardsList from "../components/CardsList";
-import { useContext, useEffect } from "react";
 import { GlobalStateContext } from "../contexts/GlobalState";
 
 function Category() {
   const { name } = useParams();
-  const {setCategory, recipes, loading, error} = useContext(GlobalStateContext)
+  const { setCategory, getPageRecipes, loading, error, recipes } =
+    useContext(GlobalStateContext);
 
-  useEffect(()=>{
-    setCategory(name)
-  }, [name])
+  useEffect(() => {
+    setCategory(name);
+  }, [name]);
+
+  const paginatedRecipes = getPageRecipes();
 
   return (
     <>
       <h1 className="mb-6">Search based on category: {name}</h1>
-      <CardsList list={recipes} loading={loading} error={error} />
+      <CardsList
+        list={paginatedRecipes}
+        loading={loading}
+        error={error}
+        resultsLength={recipes.length}
+      />
     </>
   );
 }

@@ -5,7 +5,7 @@ import CardsList from "./CardsList"
 
 // used for Home & Search 
 function Recipes() {
-  const { recipes, setRecipes, loading, setLoading, error, setError } =
+  const { recipes, setRecipes, loading, setLoading, error, setError , getPageRecipes} =
     useContext(GlobalStateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,8 +37,10 @@ function Recipes() {
       handleSearch(s);
     }
   }, [s])
+  
+  const paginatedRecipes = getPageRecipes();
 
-  return (<CardsList list={recipes} error={error} loading={loading} />)
+  return (<CardsList list={paginatedRecipes} error={error} loading={loading} resultsLength={recipes.length} />)
 
 
 }

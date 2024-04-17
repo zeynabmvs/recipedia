@@ -1,11 +1,12 @@
 import { ThreeDots } from "react-loader-spinner";
 import Card from "./Card";
 import Error from "./Error";
+import Pagination from "./Pagination";
 
-function CardsList({ list, error = "", loading = false }) {
-    console.log(list)
-  
-    if (loading) {
+function CardsList({ list, error = "", loading = false, resultsLength=0 }) {
+  console.log(list);
+
+  if (loading) {
     return (
       <ThreeDots
         visible={true}
@@ -19,17 +20,21 @@ function CardsList({ list, error = "", loading = false }) {
       />
     );
   }
-  console.log(error)
-  if (error && error !=="") {
+  console.log(error);
+  if (error && error !== "") {
     return <Error message={error} />;
   }
 
   return Array.isArray(list) && list.length > 0 ? (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {list.map((item, index) => {
-        return <Card key={index} recipe={item}></Card>;
-      })}
-    </div>
+    <> 
+    {resultsLength ? <h3>Found {resultsLength} results</h3> : null}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {list.map((item, index) => {
+          return <Card key={index} recipe={item}></Card>;
+        })}
+      </div>
+      <Pagination />
+    </>
   ) : (
     <p className="text-center py-10">Nothing Found...</p>
   );
