@@ -23,11 +23,11 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={onSearchHandler}>
+    <form onSubmit={onSearchHandler} className='w-full md:w-auto'>
       <input
         type="text"
         placeholder="Search for..."
-        className="rounded-md border border-slate-200 p-4 w-80"
+        className="rounded-md border border-slate-200 p-4 w-80 w-full md:w-auto"
         ref={searchInputRef}
       ></input>
     </form>

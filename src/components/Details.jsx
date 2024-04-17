@@ -45,7 +45,7 @@ function Details() {
       wrapperClass="justify-center items-center p-20"
     />
   ) : (
-    <div className="flex gap-8 items-start">
+    <div className="flex flex-col md:flex-row gap-8 items-start">
       <div className="basis-1/3 flex justify-center">
         <img
           src={recipeDetail?.strMealThumb}
