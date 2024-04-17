@@ -11,23 +11,28 @@ function Details() {
   let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
   const { data, error, pending } = useFetch(url);
 
-  const ingrediants = [];
-  const recipeDetail = data?.meals[0];
+  const recipeDetail = data && data.meals && data.meals[0];
+  console.log(recipeDetail)
+  
+  function getIngredientsData() {
+    const ingrediants = [];
 
-  for (let i = 1; i <= 20; i++) {
-    let keyIngredient = "strIngredient" + String(i);
-    let keyMeasure = "strMeasure" + String(i);
-
-    let ingredient = recipeDetail?.[keyIngredient];
-    let measure = recipeDetail?.[keyMeasure];
-
-    if (!ingredient) {
-      break;
+    for (let i = 1; i <= 20; i++) {
+      let keyIngredient = "strIngredient" + String(i);
+      let keyMeasure = "strMeasure" + String(i);
+  
+      let ingredient = recipeDetail?.[keyIngredient];
+      let measure = recipeDetail?.[keyMeasure];
+  
+      if (!ingredient) {
+        break;
+      }
+      ingrediants.push({
+        ingredient: ingredient,
+        measure: measure,
+      });
     }
-    ingrediants.push({
-      ingredient: ingredient,
-      measure: measure,
-    });
+    return ingrediants;
   }
 
   if (error) {
@@ -44,7 +49,7 @@ function Details() {
       wrapperStyle={{}}
       wrapperClass="justify-center items-center p-20"
     />
-  ) : (
+  ) : ( recipeDetail ? 
     <div className="flex flex-col md:flex-row gap-8 items-start">
       <div className="basis-1/3 flex justify-center">
         <img
@@ -61,7 +66,7 @@ function Details() {
         <h1 className="text-2xl">{recipeDetail?.strMeal}</h1>
         <h3 className="font-bold ">Ingredients</h3>
         <ul>
-          {ingrediants.map((item, index) => (
+          {getIngredientsData().map((item, index) => (
             <li key={index}>
               {item.ingredient}: {item.measure}
             </li>
@@ -79,7 +84,7 @@ function Details() {
           {recipeDetail?.strArea}
         </a>
       </div>
-    </div>
+    </div> : <p className="text-center">Recipe Doesn&apos;t Exist</p>
   );
 }
 

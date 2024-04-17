@@ -1,19 +1,20 @@
 import { useParams } from "react-router-dom";
 import CardsList from "../components/CardsList";
-import useFetch from "../hooks/useFetch";
+import { useContext, useEffect } from "react";
+import { GlobalStateContext } from "../contexts/GlobalState";
 
 function Category() {
   const { name } = useParams();
-  let url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`;
-  const {data, error, pending} = useFetch(url);
+  const {setCategory, recipes, loading, error} = useContext(GlobalStateContext)
 
-  const recipeList = data?.meals;
+  useEffect(()=>{
+    setCategory(name)
+  }, [name])
 
   return (
     <>
-      <h1 className="mb-6">Result for category: {name}</h1>
-      <CardsList list={recipeList} error={error} loading={pending} />
-
+      <h1 className="mb-6">Search based on category: {name}</h1>
+      <CardsList list={recipes} loading={loading} error={error} />
     </>
   );
 }

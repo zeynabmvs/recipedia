@@ -8,6 +8,8 @@ function GlobalStateProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [area, setArea] = useState("");
+  const [category, setCategory] = useState("");
 
   function handleFavorite(currentItem) {
     let cpyFavorites = [...favorites];
@@ -28,17 +30,15 @@ function GlobalStateProvider({ children }) {
     return index === -1 ? false : true;
   }
 
-  async function fetchRecipes() {
-    console.log("fetch for home");
+  async function fetchRecipes(
+    url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian"
+  ) {
     try {
       setLoading(true);
-
-      const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian"
-      );
+      const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
-        setRecipes(data.meals);
+        setRecipes(data?.meals);
         setLoading(false);
         setError("");
       } else {
@@ -54,9 +54,26 @@ function GlobalStateProvider({ children }) {
     fetchRecipes();
   }, []);
 
+  useEffect(() => {
+    console.log("fetch based on area: ", area);
+    fetchRecipes(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
+    );
+  }, [area]);
+
+
+  useEffect(() => {
+    console.log("fetch based on category: ", category);
+    fetchRecipes(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+    );
+  }, [category]);
+
+
   return (
     <GlobalStateContext.Provider
       value={{
+        setArea,
         recipes,
         setRecipes,
         loading,
@@ -66,6 +83,7 @@ function GlobalStateProvider({ children }) {
         isFavorite,
         handleFavorite,
         favorites,
+        setCategory
       }}
     >
       {children}

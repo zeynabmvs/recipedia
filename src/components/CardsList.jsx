@@ -5,7 +5,7 @@ import Error from "./Error";
 function CardsList({ list, error = "", loading = false }) {
     console.log(list)
   
-    if (loading || !list) {
+    if (loading) {
     return (
       <ThreeDots
         visible={true}
@@ -19,7 +19,7 @@ function CardsList({ list, error = "", loading = false }) {
       />
     );
   }
-
+  console.log(error)
   if (error && error !=="") {
     return <Error message={error} />;
   }
@@ -31,7 +31,7 @@ function CardsList({ list, error = "", loading = false }) {
       })}
     </div>
   ) : (
-    <p className="text-center py-10">Nothing Here...</p>
+    <p className="text-center py-10">Nothing Found...</p>
   );
 }
 
