@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Error from "./Error";
 import { GlobalStateContext } from "../contexts/GlobalState";
 import useFetch from "../hooks/useFetch";
+import Heart from "./Heart";
 
 function Details() {
   const { id } = useParams();
@@ -59,8 +60,8 @@ function Details() {
       </div>
       <div className="basis-2/3 flex flex-col gap-4">
         <div className="flex justify-between">
-          <button onClick={() => handleFavorite(recipeDetail)}>
-            {isFavorite(recipeDetail?.idMeal) ? "Remove from favorites" : "Add to Favorite"}{" "}
+          <button onClick={() => handleFavorite(recipeDetail)} className="group flex gap-2 items-center rounded-md">
+            <Heart isFavorite={isFavorite(recipeDetail?.idMeal)}/>
           </button>
         </div>
         <h1 className="text-2xl">{recipeDetail?.strMeal}</h1>

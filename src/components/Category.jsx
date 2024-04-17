@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardsList from "../components/CardsList";
 import { GlobalStateContext } from "../contexts/GlobalState";
+import Pagination from "./Pagination";
 
 function Category() {
   const { name } = useParams();
@@ -23,6 +24,8 @@ function Category() {
         error={error}
         resultsLength={recipes.length}
       />
+      <Pagination />
+
     </>
   );
 }

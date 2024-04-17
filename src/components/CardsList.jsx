@@ -28,12 +28,11 @@ function CardsList({ list, error = "", loading = false, resultsLength=0 }) {
   return Array.isArray(list) && list.length > 0 ? (
     <> 
     {resultsLength ? <h3>Found {resultsLength} results</h3> : null}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-9">
         {list.map((item, index) => {
           return <Card key={index} recipe={item}></Card>;
         })}
       </div>
-      <Pagination />
     </>
   ) : (
     <p className="text-center py-10">Nothing Found...</p>

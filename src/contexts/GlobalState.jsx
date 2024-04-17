@@ -18,14 +18,12 @@ function GlobalStateProvider({ children }) {
     setCurrentPage(currentPage);
   }
 
-  const getPageRecipes = () =>{
+  const getPageRecipes = () => {
     const indexOfLastPost = currentPage * postsPerPage;
 
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    console.log(indexOfLastPost)
-    console.log(indexOfFirstPost)
     return recipes?.slice(indexOfFirstPost, indexOfLastPost);
-  }
+  };
 
   function handleFavorite(currentItem) {
     let cpyFavorites = [...favorites];
@@ -47,8 +45,9 @@ function GlobalStateProvider({ children }) {
   }
 
   async function fetchRecipes(
-    url = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian"
+    url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
   ) {
+    console.log(url);
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -67,26 +66,28 @@ function GlobalStateProvider({ children }) {
   }
 
   useEffect(() => {
+    console.log("mountd");
     fetchRecipes();
   }, []);
 
   useEffect(() => {
     console.log("fetch based on area: ", area);
-    fetchRecipes(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
-    );
+    area !== "" &&
+      fetchRecipes(
+        `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
+      );
   }, [area]);
 
   useEffect(() => {
     console.log("fetch based on category: ", category);
-    fetchRecipes(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-    );
+    category !== "" &&
+      fetchRecipes(
+        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+      );
   }, [category]);
 
-
   useEffect(() => {
-    setCurrentPage(1)
+    setCurrentPage(1);
   }, [recipes]);
 
   return (
