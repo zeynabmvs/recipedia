@@ -24,7 +24,7 @@ function CardsList({ list, error = "", loading = false, resultsLength=0 }) {
   if (error && error !== "") {
     return <Error message={error} />;
   }
-
+  console.log("******", list)
   return Array.isArray(list) && list.length > 0 ? (
     <> 
     {resultsLength ? <h3>Found {resultsLength} results</h3> : null}

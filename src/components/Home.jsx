@@ -21,6 +21,7 @@ function Home() {
       if (data?.meals) {
         setRecipes(data?.meals);
         setLoading(false);
+        setError("")
       } else {
         setError("Nothing Found");
         setRecipes([]);
