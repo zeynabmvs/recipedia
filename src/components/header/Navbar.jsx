@@ -10,6 +10,11 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/recipes" className={({ isActive }) => isActive ? 'text-primary link': 'link'}>
+            Recipes
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/favorites" className={({ isActive }) => isActive ? 'text-primary link': 'link'}>
             Favorites
           </NavLink>
