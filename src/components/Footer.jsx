@@ -6,7 +6,7 @@ const TwoColumnFooter = () => {
   return (
     <footer
       aria-labelledby="footer-heading"
-      className="font-inter w-full max-w-7xl"
+      className="container font-inter w-full max-w-7xl"
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
