@@ -47,3 +47,14 @@
         @apply text-primary
     }
 }
+
+
+#testimonial-juliosomo {
+  bottom: 80px;
+  right: 5%;
+}
+
+#testimonial-amyrobson {
+  right: 40%;
+  bottom: -21px;
+}

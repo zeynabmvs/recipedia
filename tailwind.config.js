@@ -15,7 +15,7 @@ export default {
           1: "#000",
           2: '#7F7D7D',
         },
-        white: "#F3F3F3",
+        // white: "#F3F3F3",
         secondary: "#FE5E54",
       }
     },
