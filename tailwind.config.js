@@ -15,8 +15,8 @@ export default {
           2: '#F79F1A',
         },
         text: {
-          1: "#000",
-          2: '#7F7D7D',
+          // 1: "#000",
+          // 2: '#7F7D7D',
         },
         // white: "#F3F3F3",
         secondary: "#046E1B",

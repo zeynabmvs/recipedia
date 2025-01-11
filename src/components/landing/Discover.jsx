@@ -1,34 +1,22 @@
 import Button from "../Button";
-import { useContext, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useContext } from "react";
 import { GlobalStateContext } from "../../contexts/GlobalState";
-import Card from "../Card";
 import CardsList from "../CardsList";
 
 const Discover = () => {
-  const {
-    recipes,
-    setRecipes,
-    loading,
-    setLoading,
-    error,
-    setError,
-    getPageRecipes,
-  } = useContext(GlobalStateContext);
+  const { loading, error, getPageRecipes } = useContext(GlobalStateContext);
 
   const paginatedRecipes = getPageRecipes();
-  console.log(paginatedRecipes)
-  return (  
+  console.log(paginatedRecipes);
+  return (
     <section className="discover container">
       <div
         className="flex items-center justify-between mb-6 md:mb-8"
         id="discover-header"
       >
         <div>
-          <h2 className="text-text-1 text-2xl font-medium">
-            Discover, Create, Share
-          </h2>
-          <p className="text-text-2 text-sm">
+          <h2 className="text-2xl font-medium">Discover, Create, Share</h2>
+          <p className="text-sm text-gray-500">
             Check our most popular recipes of this week
           </p>
         </div>
@@ -41,12 +29,6 @@ const Discover = () => {
         loading={loading}
         resultsLength={6}
       />
-
-      {/* <div >
-            {recipes.map((item) => (
-                <Card recipe={item} key={item.idMeal}/>
-            ))}
-        </div> */}
     </section>
   );
 };

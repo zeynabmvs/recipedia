@@ -18,7 +18,7 @@ function Card({ recipe }) {
         </div> */}
       <div className="p-4 absolute bottom-0 left-0 w-full bg-white/85">
         <Link to={`/recipe/${recipe?.idMeal}`}>
-          <h1 className="truncate block text-text-1 font-medium text-xl">
+          <h1 className="truncate block font-medium text-xl">
             {recipe?.strMeal}
           </h1>
           <span className="tracking-wider text-primary underline underline-offset-2 text-sm">

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .inter {
   font-family: "Inter", serif;
   font-optical-sizing: auto;
@@ -10,44 +9,39 @@
   font-weight: 400;
 }
 
-.roboto{
-    font-family: "Roboto", serif;
-    font-optical-sizing: auto;
-    /* font-weight: <weight>; */
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-  }
-
-  
-
-@layer components{
-    .link {
-        @apply relative inline-block transition-all 
-    }
-
-    .link::after {
-      @apply bg-text-1;
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px; /* Adjust to place underline closer/farther */
-        width: 100%;
-        height: 2px; /* Thickness of the underline */
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.2s ease-in-out;
-      
-    }
-    .link:hover::after {
-      transform: scaleX(1);
-    }
-
-    .link-active {
-        @apply text-primary
-    }
+.roboto {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
+@layer components {
+  .link {
+    @apply relative inline-block transition-all;
+  }
+
+  .link::after {
+    @apply bg-gray-700;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Adjust to place underline closer/farther */
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+  }
+  .link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .link-active {
+    @apply text-primary;
+  }
+}
 
 #testimonial-juliosomo {
   bottom: 80px;
