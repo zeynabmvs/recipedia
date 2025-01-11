@@ -45,9 +45,9 @@ function GlobalStateProvider({ children }) {
   }
 
   async function fetchRecipes(
-    url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
+    url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=breakfast"
   ) {
-    console.log(url);
+    // console.log(url);
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -66,12 +66,12 @@ function GlobalStateProvider({ children }) {
   }
 
   useEffect(() => {
-    console.log("mountd");
+    // console.log("mountd");
     fetchRecipes();
   }, []);
 
   useEffect(() => {
-    console.log("fetch based on area: ", area);
+    // console.log("fetch based on area: ", area);
     area !== "" &&
       fetchRecipes(
         `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
@@ -79,7 +79,7 @@ function GlobalStateProvider({ children }) {
   }, [area]);
 
   useEffect(() => {
-    console.log("fetch based on category: ", category);
+    // console.log("fetch based on category: ", category);
     category !== "" &&
       fetchRecipes(
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`

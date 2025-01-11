@@ -5,7 +5,7 @@ import { testimonialData } from "../../data";
 const Hero = () => {
   return (
     <>
-      <div className="flex justify-center items-center flex-col-reverse md:flex-row mb-8 relative">
+      <div className="flex justify-center items-center flex-col-reverse md:flex-row mb-20 relative">
         <div>
           <h1 className="text-6xl font-bold pb-4 text-text-1">
             Cooking Made Fun and Easy: Unleash Your Inner Chef

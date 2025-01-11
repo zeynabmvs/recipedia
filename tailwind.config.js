@@ -6,6 +6,9 @@ export default {
       center: "true",
     },
     extend: {
+      boxShadow: {
+        'card': '0px 4px 30px 0px rgba(0, 0, 0, 0.05)',
+      },
       colors: {
         primary: {
           DEFAULT: "#F39D1A",
