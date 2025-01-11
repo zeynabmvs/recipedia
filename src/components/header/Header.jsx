@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Search from "./Search";
-import Logo from "./Logo";
+import Logo from "../Logo";
 
 function Header() {
   return (
