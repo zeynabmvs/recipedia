@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Search from "./Search";
+import Logo from "./Logo";
 
 function Header() {
   return (
     <header>
-      <div className="container flex flex-col md:flex-row justify-between h-40 items-center my-4">
-        <h1 className="text-2xl font-extrabold">
-          <Link to="/">Food<span className="text-primary">Recipes</span></Link>
-        </h1>
-        <Search />
+      <div className="container flex flex-col md:flex-row justify-between items-center mt-4 gap-4 mb-8">
+        <Logo />
         <Navbar />
+        <Search />
       </div>
     </header>
   );

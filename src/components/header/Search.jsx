@@ -1,5 +1,7 @@
 import { useRef } from 'react';
+import { FcSearch } from 'react-icons/fc';
 import { useNavigate, createSearchParams } from 'react-router-dom';
+import { HiOutlineSearch } from "react-icons/hi";
 
 const Search = () => {
   const searchInputRef = useRef();
@@ -23,13 +25,15 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={onSearchHandler} className='w-full md:w-auto'>
+    <form onSubmit={onSearchHandler} className='relative w-full md:w-auto'>
+      <HiOutlineSearch className='absolute top-[11px] left-2' size={16}/>
       <input
         type="text"
         placeholder="Search for..."
-        className="rounded-md border border-slate-200 p-4 w-80 w-full md:w-auto"
+        className="border border-slate-200 p-2 w-full md:w-60 text-sm rounded-full pl-8"
         ref={searchInputRef}
-      ></input>
+      >
+      </input>
     </form>
   );
 }
