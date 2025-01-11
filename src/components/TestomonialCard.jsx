@@ -1,6 +1,6 @@
-import StarRating from "../StarRating";
+import StarRating from "./StarRating";
 
-const Testomonial = ({ testomonial, className = {} }) => {
+const TestomonialCard = ({ testomonial, className = {} }) => {
   return (
     <div
       id={`testimonial-${testomonial.username}`}
@@ -18,4 +18,4 @@ const Testomonial = ({ testomonial, className = {} }) => {
   );
 };
 
-export default Testomonial;
+export default TestomonialCard;

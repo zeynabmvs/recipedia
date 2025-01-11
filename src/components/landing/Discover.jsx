@@ -19,7 +19,7 @@ const Discover = () => {
   const paginatedRecipes = getPageRecipes();
   console.log(paginatedRecipes)
   return (  
-    <section className="discover mb-20">
+    <section className="discover container">
       <div
         className="flex items-center justify-between mb-6 md:mb-8"
         id="discover-header"

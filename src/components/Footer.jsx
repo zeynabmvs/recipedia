@@ -6,12 +6,12 @@ const TwoColumnFooter = () => {
   return (
     <footer
       aria-labelledby="footer-heading"
-      className="container font-inter w-full max-w-7xl"
+      className="container w-full pt-20"
     >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-2">
+      <div className="mx-auto">
         <div className="flex flex-col justify-between lg:flex-row">
           <div className="space-y-8">
             <Logo />
@@ -64,7 +64,7 @@ const TwoColumnFooter = () => {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 dark:border-gray-100/10">
+        <div className="mt-16 border-t border-gray-900/10 py-8 sm:mt-20 lg:mt-24 dark:border-gray-100/10">
           <p className="text-xs leading-5 text-gray-700 dark:text-gray-300">
             &copy; 2024 Recipedia. All rights reserved.
           </p>

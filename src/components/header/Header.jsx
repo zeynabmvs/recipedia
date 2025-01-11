@@ -5,12 +5,10 @@ import Logo from "../Logo";
 
 function Header() {
   return (
-    <header>
-      <div className="container flex flex-col md:flex-row justify-between items-center mt-4 gap-4 mb-8">
-        <Logo />
-        <Navbar />
-        <Search />
-      </div>
+    <header className="container flex flex-col md:flex-row justify-between items-center my-4 gap-4">
+      <Logo />
+      <Navbar />
+      <Search />
     </header>
   );
 }

@@ -1,11 +1,11 @@
 import Button from "../Button";
-import Testomonial from "./Testomonial";
+import Testomonial from "../TestomonialCard";
 import { testimonialData } from "../../data";
 
 const Hero = () => {
   return (
     <>
-      <div className="flex justify-center items-center flex-col-reverse md:flex-row mb-20 relative">
+      <section className="container flex justify-center items-center flex-col-reverse md:flex-row relative">
         <div>
           <h1 className="text-6xl font-bold pb-4 text-text-1">
             Cooking Made Fun and Easy: Unleash Your Inner Chef
@@ -19,11 +19,11 @@ const Hero = () => {
             onClick={() => console.log("clicked btn")}
           />
         </div>
-        <img src="/hero-dish.png" alt="" className="w-[55%] scale-125" />
+        <img src="/hero-dish.png" alt="" className="" />
         {testimonialData.map((item) => (
           <Testomonial key={item.username} testomonial={item} className="hidden md:flex" />
         ))}
-      </div>
+      </section>
     </>
   );
 };

@@ -1,19 +1,16 @@
-import { useContext, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { GlobalStateContext } from "../contexts/GlobalState";
 import CtaSection from "./landing/cta";
 import Discover from "./landing/Discover";
 import Hero from "./landing/Hero";
+import About from "./landing/About";
 
 function Home() {
-
-
   return (
-    <>
+    <div className="flex flex-col gap-40">
       <Hero />
       <Discover />
+      <About />
       <CtaSection />
-    </>
+    </div>
   );
 }
 

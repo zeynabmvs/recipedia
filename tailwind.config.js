@@ -19,7 +19,7 @@ export default {
           2: '#7F7D7D',
         },
         // white: "#F3F3F3",
-        secondary: "#FE5E54",
+        secondary: "#046E1B",
       }
     },
   },
