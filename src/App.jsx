@@ -20,11 +20,11 @@ const router = createBrowserRouter(
     <Route path="/" element={<Main />}>
       <Route path="/" element={<LandingPage />} />
 
-      <Route path="" element={<WithSidebarLayout />}>
+      {/* <Route path="" element={<WithSidebarLayout />}> */}
         <Route path="/recipes" element={<Archive />} />
         <Route path="category/:name" element={<Category />} />
         <Route path="area/:name" element={<Area />} />
-      </Route>
+      {/* </Route> */}
 
       <Route path="/recipe/:id" element={<RecipeDetail />} />
       <Route path="/favorites" element={<Favorites />} />

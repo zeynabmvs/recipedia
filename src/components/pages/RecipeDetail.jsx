@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import Error from "components/common/Error";
 import { GlobalStateContext } from "src/contexts/GlobalState";
 import useFetch from "src/hooks/useFetch";
 import Heart from "components/ui/Heart";
+import Loading from "components/ui/Loading";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -40,16 +40,7 @@ function RecipeDetail() {
     return <Error message={error} />;
   }
   return pending ? (
-    <ThreeDots
-      visible={true}
-      height="80"
-      width="80"
-      color="#E8751A"
-      radius="9"
-      ariaLabel="three-dots-loading"
-      wrapperStyle={{}}
-      wrapperClass="justify-center items-center p-20"
-    />
+    <Loading />
   ) : ( recipeDetail ? 
     <div className="flex flex-col md:flex-row gap-8 items-start">
       <div className="basis-1/3 flex justify-center">

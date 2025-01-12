@@ -27,7 +27,6 @@ const Discover = () => {
         list={paginatedRecipes}
         error={error}
         loading={loading}
-        resultsLength={6}
       />
     </section>
   );

@@ -11,7 +11,6 @@ function LandingPage() {
       <Discover />
       <About />
       <Categories />
-      <CtaSection />
     </div>
   );
 }

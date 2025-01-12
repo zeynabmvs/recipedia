@@ -16,7 +16,7 @@ function Card({ recipe }) {
           <span>{recipe.strCategory}</span>
           <span>{recipe.strArea}</span>
         </div> */}
-      <div className="p-4 absolute bottom-0 left-0 w-full bg-white/85">
+      <div className="p-2 md:p-4 absolute bottom-0 left-0 w-full bg-white/85">
         <Link to={`/recipe/${recipe?.idMeal}`}>
           <h1 className="truncate block font-medium text-body-lg">
             {recipe?.strMeal}

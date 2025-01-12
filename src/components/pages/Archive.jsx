@@ -1,12 +1,20 @@
 import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { GlobalStateContext } from "src/contexts/GlobalState";
-import CardsList from "components/common/CardsList"
+import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
+import Filters from "components/layout/Filters";
 
 function Archive() {
-  const { recipes, setRecipes, loading, setLoading, error, setError , getPageRecipes} =
-    useContext(GlobalStateContext);
+  const {
+    recipes,
+    setRecipes,
+    loading,
+    setLoading,
+    error,
+    setError,
+    getPageRecipes,
+  } = useContext(GlobalStateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const s = searchParams.get("s");
@@ -21,7 +29,7 @@ function Archive() {
       if (data?.meals) {
         setRecipes(data?.meals);
         setLoading(false);
-        setError("")
+        setError("");
       } else {
         setError("Nothing Found");
         setRecipes([]);
@@ -32,21 +40,21 @@ function Archive() {
     }
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     if (s && s !== "") {
       console.log("searching for", s);
       handleSearch(s);
     }
-  }, [s])
-  
-  const paginatedRecipes = getPageRecipes();
-  return (
-    <>
-      <h1>Home</h1>
-      <CardsList list={paginatedRecipes} error={error} loading={loading} resultsLength={0} />
-      <Pagination />
+  }, [s]);
 
-    </>
+  const paginatedRecipes = getPageRecipes();
+  
+  return (
+    <div className="z-container">
+      <Filters />
+      <CardsList list={paginatedRecipes} error={error} loading={loading} />
+      <Pagination />
+    </div>
   );
 }
 

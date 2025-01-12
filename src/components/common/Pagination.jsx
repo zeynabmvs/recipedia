@@ -14,7 +14,7 @@ function Pagination() {
   }
 
   return ( paginationNumbers.length > 1 ? 
-    <div className="pagination flex justify-center gap-2 p-4">
+    <div className="pagination flex justify-center gap-2 p-4 my-10">
       {paginationNumbers.map((pageNumber, index) => (
         <button
           key={pageNumber}
