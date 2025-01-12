@@ -1,4 +1,4 @@
-import Logo from "components/Logo";
+import Logo from "components/ui/Logo";
 import { footerNavigation } from "src/data";
 
 const TwoColumnFooter = () => {

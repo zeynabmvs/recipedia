@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { HiOutlineSearch } from "react-icons/hi";
 
+// TODO: change code so it can be used as standalone saerch component
 const Search = () => {
   const searchInputRef = useRef();
   const navigate = useNavigate();

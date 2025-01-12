@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import CardsList from "components/CardsList";
+import CardsList from "components/common/CardsList";
 import { useContext, useEffect } from "react";
 import { GlobalStateContext } from "src/contexts/GlobalState";
-import Pagination from "components/Pagination";
+import Pagination from "components/common/Pagination";
 
 function Area() {
   const { name } = useParams();

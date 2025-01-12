@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
-import Error from "components/Error";
+import Error from "components/common/Error";
 import { GlobalStateContext } from "src/contexts/GlobalState";
 import useFetch from "src/hooks/useFetch";
-import Heart from "components/Heart";
+import Heart from "components/ui/Heart";
 
-function Details() {
+function RecipeDetail() {
   const { id } = useParams();
   const { isFavorite, handleFavorite } = useContext(GlobalStateContext);
   let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
@@ -89,4 +89,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default RecipeDetail;

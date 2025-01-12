@@ -1,5 +1,5 @@
-import Button from "components/Button";
-import Testomonial from "components/TestomonialCard";
+import Button from "src/components/ui/Button";
+import Testomonial from "src/components/common/TestomonialCard";
 import { testimonialData } from "src/data";
 
 const Hero = () => {

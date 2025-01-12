@@ -1,6 +1,6 @@
-import Navbar from "./Navbar";
-import Search from "./Search";
-import Logo from "components/Logo";
+import Navbar from "components/layout/Navbar";
+import Search from "components/common/Search";
+import Logo from "components/ui/Logo";
 
 function Header() {
   return (

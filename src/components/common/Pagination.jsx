@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { GlobalStateContext } from "src/contexts/GlobalState";
 
+// TODO: check if it's standalone component or part of another component
 function Pagination() {
   const { recipes, handlePagination, currentPage, postsPerPage } =
     useContext(GlobalStateContext);
