@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import useFetch from "src/hooks/useFetch";
 
 function Sidebar() {
   const {data:categories_list} = useFetch(

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
-import Error from "./Error";
-import { GlobalStateContext } from "../contexts/GlobalState";
-import useFetch from "../hooks/useFetch";
-import Heart from "./Heart";
+import Error from "components/Error";
+import { GlobalStateContext } from "src/contexts/GlobalState";
+import useFetch from "src/hooks/useFetch";
+import Heart from "components/Heart";
 
 function Details() {
   const { id } = useParams();

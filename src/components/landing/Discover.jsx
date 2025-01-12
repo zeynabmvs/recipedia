@@ -1,7 +1,7 @@
-import Button from "../Button";
+import Button from "components/Button";
 import { useContext } from "react";
-import { GlobalStateContext } from "../../contexts/GlobalState";
-import CardsList from "../CardsList";
+import { GlobalStateContext } from "src/contexts/GlobalState";
+import CardsList from "components/CardsList";
 
 const Discover = () => {
   const { loading, error, getPageRecipes } = useContext(GlobalStateContext);

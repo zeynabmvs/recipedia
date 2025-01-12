@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { GlobalStateContext } from "../contexts/GlobalState";
-import CardsList from "./CardsList"
-import Pagination from "./Pagination";
+import { GlobalStateContext } from "src/contexts/GlobalState";
+import CardsList from "components/CardsList"
+import Pagination from "components/Pagination";
 
 function Archive() {
   const { recipes, setRecipes, loading, setLoading, error, setError , getPageRecipes} =

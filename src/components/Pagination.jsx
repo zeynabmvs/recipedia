@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalStateContext } from "../contexts/GlobalState";
+import { GlobalStateContext } from "src/contexts/GlobalState";
 
 function Pagination() {
   const { recipes, handlePagination, currentPage, postsPerPage } =

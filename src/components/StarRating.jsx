@@ -1,4 +1,3 @@
-import React from "react";
 import { HiStar } from "react-icons/hi";
 
 const StarRating = ({ rate }) => {
@@ -16,9 +15,7 @@ const StarRating = ({ rate }) => {
         <HiStar
           size="16px"
           key={index}
-          className={`${
-            star === "empty" ? "text-gray-300" : "text-[#F39D1A]"
-          }`}
+          className={`${star === "empty" ? "text-gray-300" : "text-[#F39D1A]"}`}
         />
       ))}
     </div>

@@ -1,13 +1,9 @@
-import Logo from "./Logo"
-import {footerNavigation} from "../data"
-
+import Logo from "components/Logo";
+import { footerNavigation } from "src/data";
 
 const TwoColumnFooter = () => {
   return (
-    <footer
-      aria-labelledby="footer-heading"
-      className="container w-full pt-20"
-    >
+    <footer aria-labelledby="footer-heading" className="container w-full pt-20">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -16,10 +12,20 @@ const TwoColumnFooter = () => {
           <div className="space-y-8">
             <Logo />
             <p className="text-md max-w-xs leading-6 text-gray-700 dark:text-gray-300">
-            Cooking Made Fun and Easy: Unleash Your Inner Chef.
+              Cooking Made Fun and Easy: Unleash Your Inner Chef.
             </p>
             <div className="flex space-x-6 text-sm text-gray-700  dark:text-gray-300">
-              <div>Made with ❤️ by <a href="https://github.com/zeynabmvs" target="_blank" className="link">Zeynab</a>.</div>
+              <div>
+                Made with ❤️ by{" "}
+                <a
+                  href="https://github.com/zeynabmvs"
+                  target="_blank"
+                  className="link"
+                >
+                  Zeynab
+                </a>
+                .
+              </div>
             </div>
           </div>
           {/* Navigations */}
@@ -46,7 +52,7 @@ const TwoColumnFooter = () => {
             <div>
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
-                Categories
+                  Categories
                 </h3>
                 <div className="mt-6 space-y-4">
                   {footerNavigation.Categories.map((item) => (
@@ -71,7 +77,7 @@ const TwoColumnFooter = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default TwoColumnFooter
+export default TwoColumnFooter;

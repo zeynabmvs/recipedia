@@ -4,21 +4,21 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Area from "./components/Area";
-import Category from "./components/Category";
-import Details from "./components/Details";
-import Favorites from "./components/Favorites";
-import Home from "./components/Home";
-import Main from "./components/Main";
-import NotFound from "./components/NotFound";
-import WithSidebarLayout from "./components/WithSidebarLayout";
-import GlobalStateProvider from "./contexts/GlobalState";
-import Archive from "./components/Archive";
+import Area from "components/Area";
+import Category from "components/Category";
+import Details from "components/Details";
+import Favorites from "components/Favorites";
+import Home from "components/Home";
+import Main from "components/Main";
+import NotFound from "components/NotFound";
+import WithSidebarLayout from "components/WithSidebarLayout";
+import GlobalStateProvider from "src/contexts/GlobalState";
+import Archive from "components/Archive";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Main />}>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
 
       <Route path="" element={<WithSidebarLayout />}>
         <Route path="/recipes" element={<Archive />} />

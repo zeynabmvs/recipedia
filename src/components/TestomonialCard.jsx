@@ -1,4 +1,4 @@
-import StarRating from "./StarRating";
+import StarRating from "components/StarRating";
 
 const TestomonialCard = ({ testomonial, className = {} }) => {
   return (

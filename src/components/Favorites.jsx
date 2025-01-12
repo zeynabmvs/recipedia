@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import CardsList from "./CardsList";
-import { GlobalStateContext } from "../contexts/GlobalState";
+import CardsList from "components/CardsList";
+import { GlobalStateContext } from "src/contexts/GlobalState";
 
 function Favorites() {
   const { favorites } = useContext(GlobalStateContext);

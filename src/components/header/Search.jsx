@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { FcSearch } from 'react-icons/fc';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { HiOutlineSearch } from "react-icons/hi";
 
