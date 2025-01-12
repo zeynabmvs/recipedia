@@ -20,7 +20,7 @@ const Discover = () => {
             Check our most popular recipes of this week
           </p>
         </div>
-        <Button label="See all" onClick={() => console.elog("see all")} />
+        <Button label="See all" to={'/recipes'} />
       </div>
 
       <CardsList

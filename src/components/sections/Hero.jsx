@@ -16,7 +16,7 @@ const Hero = () => {
           </p>
           <Button
             label="Explore recipes"
-            onClick={() => console.log("clicked btn")}
+            to={'/recipes'}
           />
         </div>
         <img src="/hero-dish.png" alt="" className="" />

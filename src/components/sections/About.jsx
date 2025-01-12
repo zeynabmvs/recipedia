@@ -8,7 +8,7 @@ const About = () => {
         <p className="text-sm font-light mb-2">
         Our recipes are the heart and soul of our culinary community, and they reflect our commitment to providing you with memorable and delightful dining experiences.
         </p>
-        <Button label="Learn More" onClick={()=>console.log('clicked')}/>
+        <Button label="Learn More" to={'/#'} />
       </div>
       <div className="bg-white rounded-xl p-6 text-secondary w-fit absolute left-[13%] top-[75%] text-xs">
       50+ Quick Food Recipes <br/>
