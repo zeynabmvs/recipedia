@@ -1,6 +1,6 @@
 import { ThreeDots } from "react-loader-spinner";
 import Card from "components/common/Card";
-import Error from "components/pages/Error";
+import Error from "components/common/Error";
 
 function CardsList({ list, error = "", loading = false, resultsLength=0 }) {
   console.log(list);
