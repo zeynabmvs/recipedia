@@ -11,7 +11,7 @@ function Sidebar() {
 
   return (
     <aside className="basis-1/5">
-      <h2 className="font-bold text-xl mb-4">Categories</h2>
+      <h2 className="font-bold mb-4">Categories</h2>
       <ul>
         {(!categories_list || categories_list.length <=0 ) && "Error fetching categories"}
         {categories_list && categories_list.meals && categories_list.meals.length > 0
@@ -21,7 +21,7 @@ function Sidebar() {
           : null}
       </ul>
               <br />
-      <h2 className="font-bold text-xl mb-4">Areas</h2>
+      <h2 className="font-bold mb-4">Areas</h2>
       <ul>
         {(!areas_list || areas_list.length <=0 ) && "Error fetching areas"}
         {areas_list && areas_list.meals && areas_list.meals.length > 0

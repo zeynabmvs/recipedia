@@ -15,8 +15,8 @@ const Discover = () => {
         id="discover-header"
       >
         <div>
-          <h2 className="text-2xl font-medium">Discover, Create, Share</h2>
-          <p className="text-sm text-gray-500">
+          <h2 className="font-medium text-display-2">Discover, Create, Share</h2>
+          <p className="text-gray-500 text-body-lg">
             Check our most popular recipes of this week
           </p>
         </div>

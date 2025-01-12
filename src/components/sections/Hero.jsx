@@ -5,12 +5,12 @@ import { testimonialData } from "src/data";
 const Hero = () => {
   return (
     <>
-      <section className="container flex justify-center items-center flex-col-reverse md:flex-row relative">
+      <section className="z-container flex justify-center items-center flex-col-reverse md:flex-row relative">
         <div className="space-y-8">
-          <h1 className="text-6xl font-bold">
+          <h1 className="font-bold text-display-1">
             Cooking Made Fun and Easy: Unleash Your Inner Chef
           </h1>
-          <p className="text-gray-500 w-10/12">
+          <p className="text-gray-500 w-10/12 text-body-lg">
             Discover more than 10,000 recipes in your hand with the best recipe.
             Help you to find the easiest way to cook.
           </p>

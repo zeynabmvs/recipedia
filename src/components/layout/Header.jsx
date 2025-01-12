@@ -4,7 +4,7 @@ import Logo from "components/ui/Logo";
 
 function Header() {
   return (
-    <header className="container flex flex-col md:flex-row justify-between items-center my-4 gap-4">
+    <header className="z-container flex flex-col md:flex-row justify-between items-center my-4 gap-4">
       <Logo />
       <Navbar />
       <Search />

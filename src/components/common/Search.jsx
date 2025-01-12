@@ -30,7 +30,7 @@ const Search = () => {
       <input
         type="text"
         placeholder="Search for..."
-        className="border border-slate-200 p-2 w-full md:w-60 text-sm rounded-full pl-8"
+        className="border border-slate-200 p-2 w-full md:w-60 rounded-full pl-8 text-body-sm"
         ref={searchInputRef}
       >
       </input>

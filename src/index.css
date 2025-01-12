@@ -17,6 +17,26 @@
   font-variation-settings: "wdth" 100;
 }
 
+@layer base {
+  .z-container {
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  
+  @media (min-width: 768px) {
+    .z-container {
+      width: 85%; /* Slightly reduce width on tablets */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .z-container {
+      width: 80%; /* Reduce width on desktops */
+    }
+  }
+}
+
 @layer components {
   .link {
     @apply relative inline-block transition-all;
@@ -52,3 +72,5 @@
   right: 40%;
   bottom: -21px;
 }
+
+

@@ -1,6 +1,6 @@
 import { HiStar } from "react-icons/hi";
 
-const StarRating = ({ rate }) => {
+const StarRating = ({ rate, className }) => {
   // Generate an array of 5 stars with their fill status
   const stars = Array.from({ length: 5 }, (_, index) => {
     const fillLevel = rate - index; // Determine how much each star should be filled
@@ -10,12 +10,12 @@ const StarRating = ({ rate }) => {
   });
 
   return (
-    <div className="flex items-center">
+    <div className={` ${className} flex items-center`}>
       {stars.map((star, index) => (
         <HiStar
           size="16px"
           key={index}
-          className={`${star === "empty" ? "text-gray-300" : "text-[#F39D1A]"}`}
+          className={`${star === "empty" ? "text-gray-300" : "text-primary"}`}
         />
       ))}
     </div>

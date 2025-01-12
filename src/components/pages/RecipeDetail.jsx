@@ -64,7 +64,7 @@ function RecipeDetail() {
             <Heart isFavorite={isFavorite(recipeDetail?.idMeal)}/>
           </button>
         </div>
-        <h1 className="text-2xl">{recipeDetail?.strMeal}</h1>
+        <h1 className="">{recipeDetail?.strMeal}</h1>
         <h3 className="font-bold ">Ingredients</h3>
         <ul>
           {getIngredientsData().map((item, index) => (
