@@ -14,7 +14,7 @@ function CardsList({ list, error = "", loading = false, resultsLength = 0 }) {
   return Array.isArray(list) && list.length > 0 ? (
     <>
       {/* {resultsLength ? <h3>Found {resultsLength} results</h3> : null} */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mb-9">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
         {list.map((item, index) => {
           return <Card key={index} recipe={item}></Card>;
         })}

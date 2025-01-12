@@ -6,7 +6,7 @@ import Categories from "components/sections/Categories";
 
 function LandingPage() {
   return (
-    <div className="flex flex-col gap-40">
+    <div className="flex flex-col gap-20 md:gap-14 lg:gap-40">
       <Hero />
       <Discover />
       <About />

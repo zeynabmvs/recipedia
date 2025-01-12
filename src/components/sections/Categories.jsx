@@ -11,9 +11,9 @@ const Categories = () => {
   if (error) return null;
 
   return (
-    <section className="categories container flex flex-col items-center justify-center gap-6">
+    <section className="categories z-container flex flex-col items-center justify-center gap-6">
       <h3 className="font-medium text-display-3 mb-2">Browse through Categories</h3>
-      <div className="grid grid-cols-5 grid-rows-2 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 grid-rows-2 gap-6">
         {data?.categories.slice(0, 10).map((category) => (
           <Link
             to={`/category/${category.strCategory}`}
@@ -24,7 +24,7 @@ const Categories = () => {
               className="category relative flex flex-col justify-center items-center text-center bg-white shadow-card p-4 rounded-2xl"
             >
               <img src={category.strCategoryThumb} alt={category.strCategory} />
-              <h3 className="font-semibold mt-4 text-body-lg">
+              <h3 className="font-medium mt-4 text-body-lg">
                 {category.strCategory}
               </h3>
             </article>

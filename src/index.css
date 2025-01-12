@@ -26,13 +26,13 @@
   
   @media (min-width: 768px) {
     .z-container {
-      width: 85%; /* Slightly reduce width on tablets */
+      width: 95%;
     }
   }
   
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     .z-container {
-      width: 80%; /* Reduce width on desktops */
+      max-width: 1120px; /* Reduce width on desktops */
     }
   }
 }
@@ -61,16 +61,16 @@
   .link-active {
     @apply text-primary;
   }
+  
+  #testimonial-juliosomo {
+    @apply right-[3%] top-[330px] lg:right-[5%] lg:bottom-[80px] lg:top-auto;
+  }
+  
+  #testimonial-amyrobson {
+    @apply left-[4%] top-[420px] lg:left-auto lg:top-auto lg:right-[60%] lg:bottom-[-21px];
+  }
+  
 }
 
-#testimonial-juliosomo {
-  bottom: 80px;
-  right: 5%;
-}
-
-#testimonial-amyrobson {
-  right: 40%;
-  bottom: -21px;
-}
 
 
