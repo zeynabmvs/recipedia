@@ -1,4 +1,3 @@
-import CtaSection from "components/sections/CtaSection";
 import Discover from "components/sections/Discover";
 import Hero from "components/sections/Hero";
 import About from "components/sections/About";

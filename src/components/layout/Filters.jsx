@@ -9,24 +9,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "components/ui/select";
+import { CATEGORY_LIST_API, AREA_LIST_API } from "src/data";
 
 const Filters = () => {
-  const { data: categories_list } = useFetch(
-    `https://www.themealdb.com/api/json/v1/1/list.php?c=list`
-  );
-  const { data: areas_list } = useFetch(
-    `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
-  );
-
+  const { data: categories_list } = useFetch(CATEGORY_LIST_API);
+  const { data: areas_list } = useFetch(AREA_LIST_API);
   const { setCategory, setArea } = useContext(GlobalStateContext);
 
   const handleCategoryChange = (newCategory) => {
-    // console.log(newCategory);
     setCategory(newCategory);
   };
 
   const handleAreaChange = (newArea) => {
-    // console.log(newArea)
     setArea(newArea);
   };
 

@@ -1,11 +1,10 @@
 import useFetch from "src/hooks/useFetch";
 import Loading from "components/ui/Loading";
 import CategoryCard from "components/common/CategoryCard";
+import { CATEGORIES_DETAILS_API } from "src/data";
 
 const Categories = () => {
-  const { data, error, pending } = useFetch(
-    "https://www.themealdb.com/api/json/v1/1/categories.php"
-  );
+  const { data, error, pending } = useFetch(CATEGORIES_DETAILS_API);
 
   if (!data || pending) return <Loading />;
   if (error) return null;

@@ -38,3 +38,9 @@ export const testimonialData = [
     name: "Julio Somo",
   }
 ]
+
+export const CATEGORY_LIST_API = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list'
+export const AREA_LIST_API = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list'
+export const CATEGORIES_DETAILS_API = 'https://www.themealdb.com/api/json/v1/1/categories.php'
+
+export const AUTHOR_URL = 'https://github.com/zeynabmvs'

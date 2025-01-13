@@ -11,10 +11,10 @@ function GlobalStateProvider({ children }) {
   const [area, setArea] = useState("");
   const [category, setCategory] = useState("");
 
-  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, SetPostsPerPage] = useState(8);
+  const [postsPerPage, SetPostsPerPage] = useState(2);
 
   function handlePagination(currentPage) {
     setCurrentPage(currentPage);

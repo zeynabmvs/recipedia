@@ -1,5 +1,6 @@
 import Logo from "components/ui/Logo";
 import { footerNavigation } from "src/data";
+import AUTHOR_URL from "src/data";
 
 const TwoColumnFooter = () => {
   return (
@@ -17,11 +18,7 @@ const TwoColumnFooter = () => {
             <div className="flex space-x-6 text-gray-700  dark:text-gray-300">
               <div>
                 Made with ❤️ by{" "}
-                <a
-                  href="https://github.com/zeynabmvs"
-                  target="_blank"
-                  className="link"
-                >
+                <a href={AUTHOR_URL} target="_blank" className="link">
                   Zeynab
                 </a>
                 .
