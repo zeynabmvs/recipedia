@@ -1,6 +1,6 @@
 import Logo from "components/ui/Logo";
 import { footerNavigation } from "src/data";
-import AUTHOR_URL from "src/data";
+import { AUTHOR_URL } from "src/data";
 
 const TwoColumnFooter = () => {
   return (
