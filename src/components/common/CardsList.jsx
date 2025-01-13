@@ -2,7 +2,7 @@ import Card from "components/common/Card";
 import Error from "components/common/Error";
 import Loading from "components/ui/Loading";
 
-function CardsList({ list, error = "", loading = false}) {
+function CardsList({ list, error = "", loading = false, className =""}) {
 
   if (loading) {
     return <Loading />;
@@ -12,7 +12,7 @@ function CardsList({ list, error = "", loading = false}) {
   }
 
   return Array.isArray(list) && list.length > 0 ? (
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+      <div className={` ${className} grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 `}>
         {list.map((item, index) => {
           return <Card key={index} recipe={item}></Card>;
         })}

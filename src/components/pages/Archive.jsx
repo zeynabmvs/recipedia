@@ -52,7 +52,7 @@ function Archive() {
   return (
     <div className="z-container">
       <Filters />
-      <CardsList list={paginatedRecipes} error={error} loading={loading} />
+      <CardsList list={paginatedRecipes} error={error} loading={loading} className="mb-20"/>
       <Pagination />
     </div>
   );

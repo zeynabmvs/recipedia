@@ -68,13 +68,13 @@ function RecipeDetail() {
         <h3 className="font-bold ">Insructions</h3>
         <p>{recipeDetail?.strInstructions}</p>
         <h3 className="font-bold ">Category</h3>
-        <a href={`/category/${recipeDetail?.strCategory}`} className="link self-start">
+        {/* <a href={`/category/${recipeDetail?.strCategory}`} className="link self-start"> */}
           {recipeDetail?.strCategory}
-        </a>
+        {/* </a> */}
         <h3 className="font-bold ">Area</h3>
-        <a href={`/area/${recipeDetail?.strArea}`} className="link self-start">
+        {/* <a href={`/area/${recipeDetail?.strArea}`} className="link self-start"> */}
           {recipeDetail?.strArea}
-        </a>
+        {/* </a> */}
       </div>
         {/* <iframe src={recipeDetail?.strYoutube} ></iframe> */}
     </div> : <p className="text-center">Recipe Doesn&apos;t Exist</p>
