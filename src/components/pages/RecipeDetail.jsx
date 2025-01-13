@@ -1,31 +1,31 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import Error from "components/common/Error";
-import { GlobalStateContext } from "src/contexts/GlobalState";
 import useFetch from "src/hooks/useFetch";
 import Heart from "components/ui/Heart";
 import Loading from "components/ui/Loading";
-import { FavoritesContext } from "src/contexts/FavoritesContext";
+import { RECIPE_DETAIL_API } from "src/data";
+import useFavorites from "src/hooks/useFavorites";
 
 function RecipeDetail() {
   const { id } = useParams();
-  const { isFavorite, handleFavorite } = useContext(FavoritesContext);
-  let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  const { isFavorite, handleFavorite } = useFavorites();
+
+  let url = RECIPE_DETAIL_API + id;
   const { data, error, pending } = useFetch(url);
 
   const recipeDetail = data && data.meals && data.meals[0];
-  console.log(recipeDetail)
-  
+
   function getIngredientsData() {
     const ingrediants = [];
 
     for (let i = 1; i <= 20; i++) {
       let keyIngredient = "strIngredient" + String(i);
       let keyMeasure = "strMeasure" + String(i);
-  
+
       let ingredient = recipeDetail?.[keyIngredient];
       let measure = recipeDetail?.[keyMeasure];
-  
+
       if (!ingredient) {
         break;
       }
@@ -42,7 +42,7 @@ function RecipeDetail() {
   }
   return pending ? (
     <Loading />
-  ) : ( recipeDetail ? 
+  ) : recipeDetail ? (
     <div className="z-container flex flex-col md:flex-row gap-8 items-start mb-40">
       <div className="basis-1/3 flex justify-center">
         <img
@@ -52,8 +52,11 @@ function RecipeDetail() {
       </div>
       <div className="basis-2/3 flex flex-col gap-4">
         <div className="flex justify-between">
-          <button onClick={() => handleFavorite(recipeDetail)} className="group flex gap-2 items-center rounded-md">
-            <Heart isFavorite={isFavorite(recipeDetail?.idMeal)}/>
+          <button
+            onClick={() => handleFavorite(recipeDetail)}
+            className="group flex gap-2 items-center rounded-md"
+          >
+            <Heart isFavorite={isFavorite(recipeDetail?.idMeal)} />
           </button>
         </div>
         <h1 className="text-display-3">{recipeDetail?.strMeal}</h1>
@@ -70,15 +73,17 @@ function RecipeDetail() {
         <p>{recipeDetail?.strInstructions}</p>
         <h3 className="font-bold ">Category</h3>
         {/* <a href={`/category/${recipeDetail?.strCategory}`} className="link self-start"> */}
-          {recipeDetail?.strCategory}
+        {recipeDetail?.strCategory}
         {/* </a> */}
         <h3 className="font-bold ">Area</h3>
         {/* <a href={`/area/${recipeDetail?.strArea}`} className="link self-start"> */}
-          {recipeDetail?.strArea}
+        {recipeDetail?.strArea}
         {/* </a> */}
       </div>
-        {/* <iframe src={recipeDetail?.strYoutube} ></iframe> */}
-    </div> : <p className="text-center">Recipe Doesn&apos;t Exist</p>
+      {/* <iframe src={recipeDetail?.strYoutube} ></iframe> */}
+    </div>
+  ) : (
+    <p className="text-center">Recipe Doesn&apos;t Exist</p>
   );
 }
 
