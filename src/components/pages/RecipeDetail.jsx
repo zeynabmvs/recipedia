@@ -42,7 +42,7 @@ function RecipeDetail() {
   return pending ? (
     <Loading />
   ) : ( recipeDetail ? 
-    <div className="flex flex-col md:flex-row gap-8 items-start">
+    <div className="z-container flex flex-col md:flex-row gap-8 items-start mb-40">
       <div className="basis-1/3 flex justify-center">
         <img
           src={recipeDetail?.strMealThumb}
@@ -55,12 +55,12 @@ function RecipeDetail() {
             <Heart isFavorite={isFavorite(recipeDetail?.idMeal)}/>
           </button>
         </div>
-        <h1 className="">{recipeDetail?.strMeal}</h1>
-        <h3 className="font-bold ">Ingredients</h3>
+        <h1 className="text-display-3">{recipeDetail?.strMeal}</h1>
+        <h3 className="font-medium">Ingredients</h3>
         <ul>
           {getIngredientsData().map((item, index) => (
             <li key={index}>
-              {item.ingredient}: {item.measure}
+              - {item.ingredient}: {item.measure}
             </li>
           ))}
         </ul>
@@ -68,14 +68,15 @@ function RecipeDetail() {
         <h3 className="font-bold ">Insructions</h3>
         <p>{recipeDetail?.strInstructions}</p>
         <h3 className="font-bold ">Category</h3>
-        <a href={`/category/${recipeDetail?.strCategory}`} className="link">
+        <a href={`/category/${recipeDetail?.strCategory}`} className="link self-start">
           {recipeDetail?.strCategory}
         </a>
         <h3 className="font-bold ">Area</h3>
-        <a href={`/area/${recipeDetail?.strArea}`} className="link">
+        <a href={`/area/${recipeDetail?.strArea}`} className="link self-start">
           {recipeDetail?.strArea}
         </a>
       </div>
+        {/* <iframe src={recipeDetail?.strYoutube} ></iframe> */}
     </div> : <p className="text-center">Recipe Doesn&apos;t Exist</p>
   );
 }
