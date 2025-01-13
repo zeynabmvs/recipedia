@@ -11,6 +11,8 @@ function GlobalStateProvider({ children }) {
   const [area, setArea] = useState("");
   const [category, setCategory] = useState("");
 
+  const [searchQuery, setSearchQuery] = useState(""); // New state for search query
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, SetPostsPerPage] = useState(8);
 
@@ -90,6 +92,24 @@ function GlobalStateProvider({ children }) {
     setCurrentPage(1);
   }, [recipes]);
 
+  // Handle search
+  const handleSearch = async (query) => {
+    if (query.trim() === "") {
+      setError("Please enter a search term.");
+      return;
+    }
+    await fetchRecipes(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
+    );
+  };
+
+  // Fetch recipes when search query changes
+  useEffect(() => {
+    if (searchQuery) {
+      handleSearch(searchQuery);
+    }
+  }, [searchQuery]);
+
   return (
     <GlobalStateContext.Provider
       value={{
@@ -108,6 +128,9 @@ function GlobalStateProvider({ children }) {
         currentPage,
         getPageRecipes,
         postsPerPage,
+        searchQuery,
+        setSearchQuery,
+        handleSearch,
       }}
     >
       {children}

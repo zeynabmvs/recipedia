@@ -6,15 +6,8 @@ import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
 
 function Archive() {
-  const {
-    setRecipes,
-    loading,
-    setLoading,
-    error,
-    setError,
-    getPageRecipes,
-    setCategory,
-  } = useContext(GlobalStateContext);
+  const { loading, error, getPageRecipes, setCategory, setSearchQuery } =
+    useContext(GlobalStateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -22,38 +15,16 @@ function Archive() {
   const categoryParam = searchParams.get("category");
   const areaParam = searchParams.get("area");
 
-  async function handleSearch(s) {
-    try {
-      const res = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${s}`
-      );
-      const data = await res.json();
-      // const data = res;
-      if (data?.meals) {
-        setRecipes(data?.meals);
-        setLoading(false);
-        setError("");
-      } else {
-        setError("Nothing Found");
-        setRecipes([]);
-      }
-    } catch (e) {
-      setLoading(false);
-      console.log(e);
-    }
-  }
-
+  // Set search query from URL
   useEffect(() => {
-    if (s && s !== "") {
-      console.log("searching for", s);
-      handleSearch(s);
+    if (s) {
+      setSearchQuery(s);
     }
-  }, [s]);
+  }, [s, setSearchQuery]);
 
   useEffect(() => {
     setCategory(categoryParam);
-    setSearchParams({});
-
+    // setSearchParams({});
   }, [categoryParam]);
 
   const paginatedRecipes = getPageRecipes();

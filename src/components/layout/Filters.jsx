@@ -6,7 +6,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "components/ui/select";
@@ -34,7 +33,7 @@ const Filters = () => {
   return (
     <div className="mb-6 md:mb-10 flex justify-start gap-6 md:gap-8">
       <span className="text-body-lg font-medium">Filter based on: </span>
-      
+
       <Select onValueChange={(value) => handleCategoryChange(value)}>
         <SelectTrigger className="w-[280px]">
           <SelectValue placeholder="Category" />
@@ -66,17 +65,13 @@ const Filters = () => {
               areas_list.meals &&
               areas_list.meals.length > 0 &&
               areas_list.meals.map((area, index) => (
-                <SelectItem
-                  value={area.strArea}
-                  key={area.strArea}
-                >
+                <SelectItem value={area.strArea} key={area.strArea}>
                   {area.strArea}
                 </SelectItem>
               ))}
           </SelectGroup>
         </SelectContent>
       </Select>
-
     </div>
   );
 };
