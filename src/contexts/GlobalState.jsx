@@ -2,15 +2,15 @@ import { createContext, useEffect, useState } from "react";
 
 export const GlobalStateContext = createContext(null);
 
+const DEFAULT_FILTER = { type: "category", value: "breakfast" };
+
+
 function GlobalStateProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [recipesFilter, setRecipesFilter] = useState({
-    type: "category",
-    value: "breakfast",
-  });
+  const [recipesFilter, setRecipesFilter] = useState(DEFAULT_FILTER);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, SetPostsPerPage] = useState(8);
@@ -49,6 +49,8 @@ function GlobalStateProvider({ children }) {
   };
 
   useEffect(() => {
+    if (!recipesFilter.value.trim()) return;
+
     const url = getCurrentApiUrl();
     fetchRecipes(url);
   }, [recipesFilter]);
