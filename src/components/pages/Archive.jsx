@@ -13,13 +13,14 @@ function Archive() {
     error,
     setError,
     getPageRecipes,
-    category,
     setCategory,
   } = useContext(GlobalStateContext);
 
-
   const [searchParams, setSearchParams] = useSearchParams();
+
   const s = searchParams.get("s");
+  const categoryParam = searchParams.get("category");
+  const areaParam = searchParams.get("area");
 
   async function handleSearch(s) {
     try {
@@ -48,6 +49,12 @@ function Archive() {
       handleSearch(s);
     }
   }, [s]);
+
+  useEffect(() => {
+    setCategory(categoryParam);
+    setSearchParams({});
+
+  }, [categoryParam]);
 
   const paginatedRecipes = getPageRecipes();
 

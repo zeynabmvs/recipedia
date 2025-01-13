@@ -5,7 +5,7 @@ import { GlobalStateContext } from "src/contexts/GlobalState";
 function Pagination() {
   const { recipes, handlePagination, currentPage, postsPerPage } =
     useContext(GlobalStateContext);
-  const length = recipes.length;
+  const length = recipes?.length;
 
   const paginationNumbers = [];
 

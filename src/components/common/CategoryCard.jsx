@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
   return (
-    <Link to={`/recipes`} 
+    <Link to={`/recipes?category=${category.strCategory}`} 
     key={category.idCategory}>
       <article
         key={category.idCategory}
