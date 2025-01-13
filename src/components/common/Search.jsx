@@ -7,7 +7,7 @@ const Search = ({ placeholder = "Search for...", className = "" }) => {
   const searchInputRef = useRef();
   const navigate = useNavigate();
 
-  const { setSearchQuery } = useContext(GlobalStateContext);
+  const { setRecipesFilter } = useContext(GlobalStateContext);
 
   const onSearchHandler = (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ const Search = ({ placeholder = "Search for...", className = "" }) => {
     if (query === "") return;
 
     // Set search query in global state
-    setSearchQuery(query);
+  setRecipesFilter({ type: "search", value: query });
 
     // Clear search input
     searchInputRef.current.value = "";

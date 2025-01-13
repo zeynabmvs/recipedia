@@ -4,13 +4,11 @@ import { GlobalStateContext } from "src/contexts/GlobalState";
 import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
-import useFilters from "src/hooks/useFilters";
 
 function Archive() {
-  const { loading, error, getPageRecipes, setSearchQuery } =
-    useContext(GlobalStateContext);
+  const { loading, error, getPageRecipes } = useContext(GlobalStateContext);
 
-  const {setCategory} = useFilters()
+  const { setRecipesFilter } = useContext(GlobalStateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -21,12 +19,14 @@ function Archive() {
   // Set search query from URL
   useEffect(() => {
     if (s) {
-      setSearchQuery(s);
+      setRecipesFilter({ type: "search", value: s });
     }
-  }, [s, setSearchQuery]);
+  }, [s]);
 
   useEffect(() => {
-    setCategory(categoryParam);
+    if (categoryParam) {
+      setRecipesFilter({ type: "category", value: categoryParam });
+    }
     // setSearchParams({});
   }, [categoryParam]);
 

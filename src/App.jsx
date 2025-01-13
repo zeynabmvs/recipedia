@@ -12,7 +12,6 @@ import NotFound from "src/components/pages/NotFound";
 import GlobalStateProvider from "src/contexts/GlobalState";
 import Archive from "src/components/pages/Archive";
 import FavoritesProvider from "src/contexts/FavoritesContext";
-import FiltersProvider from "src/contexts/FiltersContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,11 +32,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <GlobalStateProvider>
-      <FiltersProvider>
-        <FavoritesProvider>
-          <RouterProvider router={router}></RouterProvider>
-        </FavoritesProvider>
-      </FiltersProvider>
+      <FavoritesProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </FavoritesProvider>
     </GlobalStateProvider>
   );
 }

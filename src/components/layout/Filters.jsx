@@ -9,17 +9,26 @@ import {
 } from "components/ui/select";
 import { CATEGORY_LIST_API, AREA_LIST_API } from "src/data";
 import useFilters from "src/hooks/useFilters";
+import { useContext } from "react";
+import { GlobalStateContext } from "src/contexts/GlobalState";
 
 const Filters = () => {
-  // const { data: categories_list } = useFetch(CATEGORY_LIST_API);
-  // const { data: areas_list } = useFetch(AREA_LIST_API);
-  const { setCategory, setArea, categoriesList, areaList } = useFilters();
+  const { categoriesList, areaList } = useFilters();
+    const {setRecipesFilter} = useContext(GlobalStateContext)
+
+  const handleCategoryChange = (newValue) => {
+    setRecipesFilter({type: 'category', value: newValue})
+  };
+
+  const handleAreaChange = (newValue) => {
+    setRecipesFilter({type: 'area', value: newValue})
+  };
 
   return (
     <div className="mb-6 md:mb-10 flex justify-start gap-6 md:gap-8">
       <span className="text-body-lg font-medium">Filter based on: </span>
 
-      <Select onValueChange={(value) => setCategory(value)}>
+      <Select onValueChange={(value) => handleCategoryChange(value)}>
         <SelectTrigger className="w-[280px]">
           <SelectValue placeholder="Category" />
         </SelectTrigger>
@@ -40,7 +49,7 @@ const Filters = () => {
         </SelectContent>
       </Select>
 
-      <Select onValueChange={(value) => setArea(value)}>
+      <Select onValueChange={(value) => handleAreaChange(value)}>
         <SelectTrigger className="w-[280px]">
           <SelectValue placeholder="Area" />
         </SelectTrigger>
