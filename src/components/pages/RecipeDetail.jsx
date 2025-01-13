@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import Error from "components/common/Error";
 import useFetch from "src/hooks/useFetch";
@@ -10,11 +9,9 @@ import useFavorites from "src/hooks/useFavorites";
 function RecipeDetail() {
   const { id } = useParams();
   const { isFavorite, handleFavorite } = useFavorites();
+  const { data, error, pending } = useFetch(`${RECIPE_DETAIL_API}${id}`);
 
-  let url = RECIPE_DETAIL_API + id;
-  const { data, error, pending } = useFetch(url);
-
-  const recipeDetail = data && data.meals && data.meals[0];
+  const recipeDetail = data?.meals?.[0];
 
   function getIngredientsData() {
     const ingrediants = [];
@@ -37,54 +34,91 @@ function RecipeDetail() {
     return ingrediants;
   }
 
-  if (error) {
-    return <Error message={error} />;
-  }
-  return pending ? (
-    <Loading />
-  ) : recipeDetail ? (
-    <div className="z-container flex flex-col md:flex-row gap-8 items-start mb-40">
-      <div className="basis-1/3 flex justify-center">
-        <img
-          src={recipeDetail?.strMealThumb}
-          className="block w-full rounded-lg"
-        ></img>
-      </div>
-      <div className="basis-2/3 flex flex-col gap-4">
-        <div className="flex justify-between">
-          <button
-            onClick={() => handleFavorite(recipeDetail)}
-            className="group flex gap-2 items-center rounded-md"
-          >
-            <Heart isFavorite={isFavorite(recipeDetail?.idMeal)} />
-          </button>
-        </div>
-        <h1 className="text-display-3">{recipeDetail?.strMeal}</h1>
-        <h3 className="font-medium">Ingredients</h3>
-        <ul>
-          {getIngredientsData().map((item, index) => (
-            <li key={index}>
-              - {item.ingredient}: {item.measure}
-            </li>
-          ))}
-        </ul>
+  const ingredients = getIngredientsData(recipeDetail);
 
-        <h3 className="font-bold ">Insructions</h3>
-        <p>{recipeDetail?.strInstructions}</p>
-        <h3 className="font-bold ">Category</h3>
-        {/* <a href={`/category/${recipeDetail?.strCategory}`} className="link self-start"> */}
-        {recipeDetail?.strCategory}
-        {/* </a> */}
-        <h3 className="font-bold ">Area</h3>
-        {/* <a href={`/area/${recipeDetail?.strArea}`} className="link self-start"> */}
-        {recipeDetail?.strArea}
-        {/* </a> */}
-      </div>
-      {/* <iframe src={recipeDetail?.strYoutube} ></iframe> */}
+  if (error) return <Error message={error} />;
+  if (pending) return <Loading />;
+  if (!recipeDetail)
+    return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
+
+  return (
+    <div className="z-container flex flex-col md:flex-row gap-8 items-start mb-40">
+      <ImageSection imageUrl={recipeDetail?.strMealThumb} />
+      <DetailsSection
+        recipeDetail={recipeDetail}
+        ingredients={ingredients}
+        isFavorite={isFavorite}
+        handleFavorite={handleFavorite}
+      />
     </div>
-  ) : (
-    <p className="text-center">Recipe Doesn&apos;t Exist</p>
   );
 }
+
+// Stateless component for the image section
+const ImageSection = ({ imgUrl }) => {
+  return (
+    <div className="basis-1/3 flex justify-center">
+      <img src={imgUrl} className="block w-full rounded-lg"></img>
+    </div>
+  );
+};
+
+// Stateless component for the details section
+const DetailsSection = ({
+  recipeDetail,
+  ingredients,
+  isFavorite,
+  handleFavorite,
+}) => (
+  <div className="basis-2/3 flex flex-col gap-4">
+    <div className="flex justify-between">
+      <button
+        onClick={() => handleFavorite(recipeDetail)}
+        className="group flex gap-2 items-center rounded-md"
+      >
+        <Heart isFavorite={isFavorite(recipeDetail?.idMeal)} />
+      </button>
+    </div>
+    <h1 className="text-display-3">{recipeDetail?.strMeal}</h1>
+    <IngredientsList ingredients={ingredients} />
+    <Instructions instructions={recipeDetail?.strInstructions} />
+    <CategoryArea
+      category={recipeDetail?.strCategory}
+      area={recipeDetail?.strArea}
+    />
+  </div>
+);
+
+// Stateless component for ingredients list
+const IngredientsList = ({ ingredients }) => (
+  <>
+    <h3 className="font-medium">Ingredients</h3>
+    <ul>
+      {ingredients.map((item, index) => (
+        <li key={index}>
+          - {item.ingredient}: {item.measure}
+        </li>
+      ))}
+    </ul>
+  </>
+);
+
+// Stateless component for instructions
+const Instructions = ({ instructions }) => (
+  <>
+    <h3 className="font-bold">Instructions</h3>
+    <p>{instructions}</p>
+  </>
+);
+
+// Stateless component for category and area
+const CategoryArea = ({ category, area }) => (
+  <>
+    <h3 className="font-bold">Category</h3>
+    {category}
+    <h3 className="font-bold">Area</h3>
+    {area}
+  </>
+);
 
 export default RecipeDetail;
