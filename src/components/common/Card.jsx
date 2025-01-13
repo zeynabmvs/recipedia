@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Card({ recipe }) {
   return (
-    <div className="recipe-item group relative rounded-2xl bg-white/85 shadow-card overflow-hidden">
+    <div className="recipe-item group relative rounded-2xl bg-white/85 shadow-card-1 overflow-hidden">
       <Link
         to={`/recipe/${recipe?.idMeal}`}
         className="flex justify-center items-center overflow-hidden"

@@ -7,14 +7,16 @@ import Filters from "components/layout/Filters";
 
 function Archive() {
   const {
-    recipes,
     setRecipes,
     loading,
     setLoading,
     error,
     setError,
     getPageRecipes,
+    category,
+    setCategory,
   } = useContext(GlobalStateContext);
+
 
   const [searchParams, setSearchParams] = useSearchParams();
   const s = searchParams.get("s");
@@ -48,11 +50,16 @@ function Archive() {
   }, [s]);
 
   const paginatedRecipes = getPageRecipes();
-  
+
   return (
     <div className="z-container">
       <Filters />
-      <CardsList list={paginatedRecipes} error={error} loading={loading} className="mb-20"/>
+      <CardsList
+        list={paginatedRecipes}
+        error={error}
+        loading={loading}
+        className="mb-20"
+      />
       <Pagination />
     </div>
   );

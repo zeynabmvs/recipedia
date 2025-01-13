@@ -4,7 +4,7 @@ const TestomonialCard = ({ testomonial, className = {} }) => {
   return (
     <div
       id={`testimonial-${testomonial.username}`}
-      className={` ${className} flex flex-col justify-center items-center rounded-lg p-2 w-[210px] shadow-md absolute bg-white`}
+      className={` ${className} flex flex-col justify-center items-center rounded-lg p-2 w-[210px] shadow-card-1 absolute bg-white`}
     >
       <div className="bg-gray-100 p-4 pb-2 rounded-xl w-full font-light mb-2">
         <StarRating rate={testomonial.rating} className="mb-2" />

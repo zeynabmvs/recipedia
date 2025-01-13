@@ -7,7 +7,7 @@ const Discover = () => {
   const { loading, error, getPageRecipes } = useContext(GlobalStateContext);
 
   const paginatedRecipes = getPageRecipes();
-  console.log(paginatedRecipes);
+
   return (
     <section className="discover z-container">
       <div

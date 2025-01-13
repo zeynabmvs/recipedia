@@ -19,7 +19,7 @@ const Search = () => {
     searchInputRef.current.value = ""
 
     navigate({
-      pathname: '/',
+      pathname: '/recipes/',
       search: `?${queryString}`
     })
   };

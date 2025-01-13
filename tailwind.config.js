@@ -50,7 +50,7 @@ export default {
         },
       },
       boxShadow: {
-        card: "0px 4px 30px 0px rgba(0, 0, 0, 0.05)",
+        "card-1": "0px 4px 30px 0px rgba(0, 0, 0, 0.05)",
       },
       borderRadius: {
         lg: `var(--radius)`,
