@@ -4,10 +4,13 @@ import { GlobalStateContext } from "src/contexts/GlobalState";
 import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
+import useFilters from "src/hooks/useFilters";
 
 function Archive() {
-  const { loading, error, getPageRecipes, setCategory, setSearchQuery } =
+  const { loading, error, getPageRecipes, setSearchQuery } =
     useContext(GlobalStateContext);
+
+  const {setCategory} = useFilters()
 
   const [searchParams, setSearchParams] = useSearchParams();
 

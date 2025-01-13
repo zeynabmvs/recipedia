@@ -6,8 +6,8 @@ function GlobalStateProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [area, setArea] = useState("");
-  const [category, setCategory] = useState("");
+  // const [area, setArea] = useState("");
+  // const [category, setCategory] = useState("");
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -47,25 +47,25 @@ function GlobalStateProvider({ children }) {
   }
 
   useEffect(() => {
-    // console.log("mountd");
+    console.log("mountd");
     fetchRecipes();
   }, []);
 
-  useEffect(() => {
-    // console.log("fetch based on area: ", area);
-    area !== "" &&
-      fetchRecipes(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
-      );
-  }, [area]);
+  // useEffect(() => {
+  //   console.log("fetch based on area: ", area);
+  //   area !== "" &&
+  //     fetchRecipes(
+  //       `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
+  //     );
+  // }, [area]);
 
-  useEffect(() => {
-    // console.log("fetch based on category: ", category);
-    category !== "" &&
-      fetchRecipes(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-      );
-  }, [category]);
+  // useEffect(() => {
+  //   console.log("fetch based on category: ", category);
+  //   category !== "" &&
+  //     fetchRecipes(
+  //       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+  //     );
+  // }, [category]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -92,7 +92,7 @@ function GlobalStateProvider({ children }) {
   return (
     <GlobalStateContext.Provider
       value={{
-        setArea,
+        // setArea,
         recipes,
         setRecipes,
         loading,
@@ -102,7 +102,7 @@ function GlobalStateProvider({ children }) {
         // isFavorite,
         // handleFavorite,
         // favorites,
-        setCategory,
+        // setCategory,
         handlePagination,
         currentPage,
         getPageRecipes,
