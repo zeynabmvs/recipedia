@@ -5,10 +5,11 @@ import { GlobalStateContext } from "src/contexts/GlobalState";
 import useFetch from "src/hooks/useFetch";
 import Heart from "components/ui/Heart";
 import Loading from "components/ui/Loading";
+import { FavoritesContext } from "src/contexts/FavoritesContext";
 
 function RecipeDetail() {
   const { id } = useParams();
-  const { isFavorite, handleFavorite } = useContext(GlobalStateContext);
+  const { isFavorite, handleFavorite } = useContext(FavoritesContext);
   let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
   const { data, error, pending } = useFetch(url);
 

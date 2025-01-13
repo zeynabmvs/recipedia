@@ -14,6 +14,7 @@ import NotFound from "src/components/pages/NotFound";
 import WithSidebarLayout from "src/components/pages/WithSidebarLayout";
 import GlobalStateProvider from "src/contexts/GlobalState";
 import Archive from "src/components/pages/Archive";
+import FavoritesProvider from "src/contexts/FavoritesContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,9 +22,9 @@ const router = createBrowserRouter(
       <Route path="/" element={<LandingPage />} />
 
       {/* <Route path="" element={<WithSidebarLayout />}> */}
-        <Route path="/recipes" element={<Archive />} />
-        {/* <Route path="category/:name" element={<Category />} /> */}
-        {/* <Route path="area/:name" element={<Area />} /> */}
+      <Route path="/recipes" element={<Archive />} />
+      {/* <Route path="category/:name" element={<Category />} /> */}
+      {/* <Route path="area/:name" element={<Area />} /> */}
       {/* </Route> */}
 
       <Route path="/recipe/:id" element={<RecipeDetail />} />
@@ -36,7 +37,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <GlobalStateProvider>
-      <RouterProvider router={router}></RouterProvider>
+      <FavoritesProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </FavoritesProvider>
     </GlobalStateProvider>
   );
 }
