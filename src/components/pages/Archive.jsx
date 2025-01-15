@@ -4,6 +4,7 @@ import { GlobalStateContext } from "src/contexts/GlobalState";
 import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
+import Container from "components/common/Container";
 
 function Archive() {
   const { loading, error, getPageRecipes } = useContext(GlobalStateContext);
@@ -33,7 +34,7 @@ function Archive() {
   const paginatedRecipes = getPageRecipes();
 
   return (
-    <div className="z-container">
+    <Container>
       <Filters />
       <CardsList
         list={paginatedRecipes}
@@ -42,7 +43,7 @@ function Archive() {
         className="mb-20"
       />
       <Pagination />
-    </div>
+    </Container>
   );
 }
 

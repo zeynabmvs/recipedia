@@ -1,10 +1,12 @@
 import Logo from "components/ui/Logo";
 import { footerNavigation } from "src/data";
 import { AUTHOR_URL } from "src/data";
+import Container from "components/common/Container";
 
 const TwoColumnFooter = () => {
   return (
-    <footer aria-labelledby="footer-heading" className="z-container pt-20">
+    <footer aria-labelledby="footer-heading">
+      <Container className="pt-20">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -73,6 +75,8 @@ const TwoColumnFooter = () => {
           </p>
         </div>
       </div>
+      </Container>
+
     </footer>
   );
 };

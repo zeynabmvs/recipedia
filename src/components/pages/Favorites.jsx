@@ -1,14 +1,15 @@
 import CardsList from "components/common/CardsList";
 import useFavorites from "src/hooks/useFavorites";
+import Container from "components/common/Container";
 
 function Favorites() {
   const { favorites } = useFavorites();
 
   return (
-    <div className="z-container">
+    <Container>
       <h1 className="mb-6">Favorites</h1>
       <CardsList list={favorites} className="mb-40" />
-    </div>
+    </Container>
   );
 }
 

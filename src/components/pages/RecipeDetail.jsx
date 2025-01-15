@@ -5,6 +5,7 @@ import Heart from "components/ui/Heart";
 import Loading from "components/ui/Loading";
 import { RECIPE_DETAIL_API } from "src/data";
 import useFavorites from "src/hooks/useFavorites";
+import Container from "components/common/Container";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ function RecipeDetail() {
     return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
 
   return (
-    <div className="z-container flex flex-col md:flex-row gap-8 items-start mb-40">
+      <Container className="flex flex-col md:flex-row gap-8 items-start mb-40">
       <ImageSection imageUrl={recipeDetail?.strMealThumb} />
       <DetailsSection
         recipeDetail={recipeDetail}
@@ -50,7 +51,7 @@ function RecipeDetail() {
         isFavorite={isFavorite}
         handleFavorite={handleFavorite}
       />
-    </div>
+    </Container>
   );
 }
 
