@@ -16,7 +16,7 @@
     --card-foreground: 222.2 47.4% 11.2%;
     --primary: 36, 89%, 53%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 137 91% 25%;;
+    --secondary: 137 91% 25%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -58,20 +58,19 @@
     max-width: 1440px;
     margin: 0 auto;
   }
-  
+
   @media (min-width: 768px) {
     .z-container {
       width: 95%;
     }
   }
-  
+
   @media (min-width: 1440px) {
     .z-container {
       max-width: 1120px; /* Reduce width on desktops */
     }
   }
 }
-
 
 .inter {
   font-family: "Inter", serif;
@@ -112,13 +111,14 @@
   .link-active {
     @apply text-primary;
   }
-  
+
   #testimonial-juliosomo {
-    @apply right-[3%] top-[330px] lg:right-[5%] lg:bottom-[80px] lg:top-auto;
+    /* @apply right-[3%] top-[330px] lg:right-[5%] lg:bottom-[80px] lg:top-auto; */
+    @apply -mt-8;
+
   }
-  
+
   #testimonial-amyrobson {
-    @apply left-[4%] top-[420px] lg:left-auto lg:top-auto lg:right-[60%] lg:bottom-[-21px];
+    /* @apply left-[4%] top-[420px] lg:left-auto lg:top-auto lg:right-[60%] lg:bottom-[-21px]; */
   }
-  
 }

@@ -1,6 +1,16 @@
 import Button from "src/components/ui/Button";
 import TestomonialCard from "src/components/common/TestomonialCard";
 import { testimonialData } from "src/data";
+import { motion } from "framer-motion";
+
+const cardAnimation = {
+  initial: { opacity: 0, y: 0},
+  inView: {
+    opacity: 1,
+    y: -170,
+    transition: { duration: 0.3, ease: "easeOut", delay: 0.5 },
+  },
+};
 
 const Hero = () => {
   return (
@@ -16,16 +26,24 @@ const Hero = () => {
           </p>
           <Button label="Explore recipes" to={"/recipes"} />
         </div>
-        <div className="relative">
+        <motion.div className="relative">
           <img src="/hero-dish.png" alt="" />
-          {testimonialData.map((item) => (
-            <TestomonialCard
-              key={item.username}
-              testomonial={item}
-              className="hidden md:flex"
-            />
-          ))}
-        </div>
+          <motion.div
+            initial="initial"
+            animate="inView"
+            variants={cardAnimation}
+            className="absolute flex gap-40 lg:gap-20 justify-center lg:justify-start w-full lg:w-auto"
+            viewport={{ once: true }}
+          >
+            {testimonialData.map((item) => (
+              <TestomonialCard
+                key={item.username}
+                testomonial={item}
+                className="hidden md:flex"
+              />
+            ))}
+          </motion.div>
+        </motion.div>
       </section>
     </>
   );
