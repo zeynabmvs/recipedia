@@ -44,7 +44,7 @@ function RecipeDetail() {
 
   return (
       <Container className="flex flex-col md:flex-row gap-8 items-start mb-40">
-      <ImageSection imageUrl={recipeDetail?.strMealThumb} />
+      <ImageSection imgUrl={recipeDetail?.strMealThumb} />
       <DetailsSection
         recipeDetail={recipeDetail}
         ingredients={ingredients}
