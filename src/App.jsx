@@ -4,13 +4,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import RecipeDetail from "src/components/pages/RecipeDetail";
-import Favorites from "src/components/pages/Favorites";
-import LandingPage from "src/components/pages/Landing";
+import RecipeDetail from "components/pages/RecipeDetail";
+import Favorites from "components/pages/Favorites";
+import LandingPage from "components/pages/Landing";
 import Main from "components/Main";
-import NotFound from "src/components/pages/NotFound";
+import NotFound from "components/pages/NotFound";
 import GlobalStateProvider from "src/contexts/GlobalState";
-import Archive from "src/components/pages/Archive";
+import Archive from "components/pages/Archive";
 import FavoritesProvider from "src/contexts/FavoritesContext";
 
 const router = createBrowserRouter(

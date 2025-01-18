@@ -7,7 +7,7 @@ function Favorites() {
 
   return (
     <Container>
-      <h1 className="mb-6">Favorites</h1>
+      <h1 className="mb-6 text-body-lg">My favorite recipes</h1>
       <CardsList list={favorites} className="mb-40" />
     </Container>
   );

@@ -43,14 +43,14 @@ function RecipeDetail() {
     return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
 
   return (
-      <Container className="flex flex-col md:flex-row gap-8 items-start mb-40">
-      <ImageSection imgUrl={recipeDetail?.strMealThumb} />
+    <Container className="flex flex-col md:flex-row gap-8 items-start mb-40">
       <DetailsSection
         recipeDetail={recipeDetail}
         ingredients={ingredients}
         isFavorite={isFavorite}
         handleFavorite={handleFavorite}
       />
+      <ImageSection imgUrl={recipeDetail?.strMealThumb} />
     </Container>
   );
 }
@@ -81,12 +81,12 @@ const DetailsSection = ({
       </button>
     </div>
     <h1 className="text-display-3">{recipeDetail?.strMeal}</h1>
-    <IngredientsList ingredients={ingredients} />
-    <Instructions instructions={recipeDetail?.strInstructions} />
     <CategoryArea
       category={recipeDetail?.strCategory}
       area={recipeDetail?.strArea}
     />
+    <IngredientsList ingredients={ingredients} />
+    <Instructions instructions={recipeDetail?.strInstructions} />
   </div>
 );
 
@@ -114,12 +114,14 @@ const Instructions = ({ instructions }) => (
 
 // Stateless component for category and area
 const CategoryArea = ({ category, area }) => (
-  <>
-    <h3 className="font-bold">Category</h3>
-    {category}
-    <h3 className="font-bold">Area</h3>
-    {area}
-  </>
+  <div className="flex gap-2">
+    <h3 className="font-bold">
+      Category: <span className="font-light">{category}</span>
+    </h3>
+    <h3 className="font-bold">
+      Area: <span className="font-light">{area}</span>
+    </h3>
+  </div>
 );
 
 export default RecipeDetail;

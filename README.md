@@ -27,7 +27,7 @@ Welcome to the **Recipedia**, a simple and intuitive web application built with 
 ## Further Development
 Here are my plans for further development and improvements to the app:
 
-- [ ] **Add Toast Notifications** : Implement toast notifications to provide feedback when a recipe is added or removed from favorites. This can be done using libraries like React Toastify.
+- [x] **Add Toast Notifications** : Implement toast notifications to provide feedback when a recipe is added or removed from favorites. This can be done using libraries like React Toastify.
 
 - [ ] **Infinite Scroll**: Implement infinite scroll using the Intersection Observer API to load more recipes as the user scrolls down the page. This will improve the user experience by eliminating the need for pagination.
 
