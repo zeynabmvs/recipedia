@@ -1,9 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 export const GlobalStateContext = createContext(null);
-
-const DEFAULT_FILTER = { type: "category", value: "breakfast" };
-
+import { DEFAULT_FILTER, DEFAULT_PER_PAGE } from "src/data";
 
 function GlobalStateProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -13,7 +11,6 @@ function GlobalStateProvider({ children }) {
   const [recipesFilter, setRecipesFilter] = useState(DEFAULT_FILTER);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, SetPostsPerPage] = useState(8);
 
   async function fetchRecipes(url) {
     try {
@@ -59,7 +56,7 @@ function GlobalStateProvider({ children }) {
     setCurrentPage(currentPage);
   }
 
-  const getPageRecipes = (perPage = postsPerPage) => {
+  const getPageRecipes = (perPage = DEFAULT_PER_PAGE) => {
     const indexOfLastPost = currentPage * perPage;
 
     const indexOfFirstPost = indexOfLastPost - perPage;
@@ -82,7 +79,6 @@ function GlobalStateProvider({ children }) {
         handlePagination,
         currentPage,
         getPageRecipes,
-        postsPerPage,
         setRecipesFilter,
       }}
     >
