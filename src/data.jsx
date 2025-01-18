@@ -47,5 +47,5 @@ export const RECIPE_DETAIL_API ='https://www.themealdb.com/api/json/v1/1/lookup.
 export const AUTHOR_URL = 'https://github.com/zeynabmvs'
 
 
-export const DEFAULT_FILTER = { type: "category", value: "breakfast" };
-export const DEFAULT_PER_PAGE = 8
+export const DEFAULT_FILTER = { type: "category", value: "side" };
+export const DEFAULT_PER_PAGE = 24
