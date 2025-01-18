@@ -20,9 +20,9 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="#" className='link'>
+          <a href="#about" className='link'>
             About us
-          </NavLink>
+          </a>
         </li>
       </ul>
     </nav>

@@ -2,7 +2,7 @@ import Button from "src/components/ui/Button";
 
 const About = () => {
   return (
-    <section className="about relative max-w-none w-full object-cover bg-cover bg-no-repeat bg-center bg-[url('/about-bg.png')] h-[400px] md:h-[567px] flex flex-col items-center justify-around">
+    <section id="about" className="about relative max-w-none w-full object-cover bg-cover bg-no-repeat bg-center bg-[url('/about-bg.png')] h-[400px] md:h-[567px] flex flex-col items-center justify-around">
       <div className="bg-white lg:absolute right-[20%] top-[35%] rounded-2xl p-8 pb-6 w-[300px] md:w-[400px] z-50">
         <h3 className="font-medium mb-3 text-body-lg">About us</h3>
         <p className="font-light mb-2">
