@@ -33,7 +33,7 @@ Here are my plans for further development and improvements to the app:
 
 - [x] **UI Enhancements**: Add more UI components and animations to make the app more visually appealing. Use libraries like Framer Motion for animations.
 
-- [ ] **Performance Optimization**: Use useMemo in the context to optimize performance by memoizing expensive calculations and preventing unnecessary re-renders.
+- [x] **Performance Optimization**: Use useMemo in the context to optimize performance by memoizing expensive calculations and preventing unnecessary re-renders.
 
 ---
 
