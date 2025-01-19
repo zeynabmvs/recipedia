@@ -1,7 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 
 export const GlobalStateContext = createContext(null);
-import { DEFAULT_FILTER, DEFAULT_PER_PAGE } from "src/data";
+import {
+  DEFAULT_FILTER,
+  DEFAULT_PER_PAGE,
+  RECIPES_BY_CATEGORY_API,
+  RECIPES_BY_AREA_API,
+  RECIPES_BY_QUERY_API,
+} from "src/data";
 
 function GlobalStateProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -30,20 +36,20 @@ function GlobalStateProvider({ children }) {
     }
   }
 
-  const getCurrentApiUrl = () => {
+  const getCurrentApiUrl = useCallback( () => {
     let url;
 
     if (recipesFilter.type === "category") {
-      url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${recipesFilter.value}`;
+      url = RECIPES_BY_CATEGORY_API + recipesFilter.value;
     } else if (recipesFilter.type === "area") {
-      url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${recipesFilter.value}`;
+      url = RECIPES_BY_AREA_API + recipesFilter.value;
     } else {
       if (recipesFilter.value.trim() === "") return;
-      url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipesFilter.value}`;
+      url = RECIPES_BY_QUERY_API + recipesFilter.value;
     }
 
     return url;
-  };
+  }, [recipesFilter]);
 
   useEffect(() => {
     if (!recipesFilter.value.trim()) return;
@@ -52,16 +58,16 @@ function GlobalStateProvider({ children }) {
     fetchRecipes(url);
   }, [recipesFilter]);
 
-  function handlePagination(currentPage) {
+  const handlePagination =  (currentPage) => {
     setCurrentPage(currentPage);
   }
 
-  const getPageRecipes = (perPage = DEFAULT_PER_PAGE) => {
+  const getPageRecipes = useCallback( (perPage = DEFAULT_PER_PAGE) => {
     const indexOfLastPost = currentPage * perPage;
 
     const indexOfFirstPost = indexOfLastPost - perPage;
     return recipes?.slice(indexOfFirstPost, indexOfLastPost);
-  };
+  }, [currentPage, recipes]);
 
   useEffect(() => {
     setCurrentPage(1);

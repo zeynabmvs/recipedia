@@ -43,6 +43,10 @@ export const CATEGORY_LIST_API = 'https://www.themealdb.com/api/json/v1/1/list.p
 export const AREA_LIST_API = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list'
 export const CATEGORIES_DETAILS_API = 'https://www.themealdb.com/api/json/v1/1/categories.php'
 export const RECIPE_DETAIL_API ='https://www.themealdb.com/api/json/v1/1/lookup.php?i='
+export const RECIPES_BY_CATEGORY_API = 'https://www.themealdb.com/api/json/v1/1/filter.php?c='
+export const RECIPES_BY_AREA_API = 'https://www.themealdb.com/api/json/v1/1/filter.php?a='
+export const RECIPES_BY_QUERY_API = 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+
 
 export const AUTHOR_URL = 'https://github.com/zeynabmvs'
 
