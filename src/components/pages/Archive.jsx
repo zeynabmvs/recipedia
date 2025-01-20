@@ -14,6 +14,7 @@ function Archive() {
 
   const s = searchParams.get("s");
   const categoryParam = searchParams.get("category");
+  const areaParam = searchParams.get("area");
 
   // Set search query from URL
   useEffect(() => {
@@ -23,12 +24,22 @@ function Archive() {
   }, [s]);
 
   useEffect(() => {
+    console.log(categoryParam, areaParam)
     if (categoryParam) {
       setRecipesFilter({ type: "category", value: categoryParam });
     }
-  }, [categoryParam]);
+
+    if (areaParam) {
+      setRecipesFilter({ type: "area", value: areaParam });
+    }
+  }, [categoryParam, areaParam]);
 
   const paginatedRecipes = getPageRecipes();
+
+  useEffect(()=>{
+
+    console.log('new paginated recipes are here', )
+  }, [paginatedRecipes])
 
   return (
     <Container>

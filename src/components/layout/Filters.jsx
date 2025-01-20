@@ -12,14 +12,14 @@ import { GlobalStateContext } from "src/contexts/GlobalState";
 
 const Filters = () => {
   const { categoriesList, areaList } = useFilters();
-    const {setRecipesFilter} = useContext(GlobalStateContext)
+  const { recipesFilter, setRecipesFilter } = useContext(GlobalStateContext);
 
   const handleCategoryChange = (newValue) => {
-    setRecipesFilter({type: 'category', value: newValue})
+    setRecipesFilter({ type: "category", value: newValue });
   };
 
   const handleAreaChange = (newValue) => {
-    setRecipesFilter({type: 'area', value: newValue})
+    setRecipesFilter({ type: "area", value: newValue });
   };
 
   return (
@@ -28,7 +28,13 @@ const Filters = () => {
 
       <Select onValueChange={(value) => handleCategoryChange(value)}>
         <SelectTrigger className="w-[280px]">
-          <SelectValue placeholder="Category" />
+          <SelectValue
+            placeholder={
+              recipesFilter.type === "category"
+                ? recipesFilter.value
+                : "Category"
+            }
+          />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -49,7 +55,11 @@ const Filters = () => {
 
       <Select onValueChange={(value) => handleAreaChange(value)}>
         <SelectTrigger className="w-[280px]">
-          <SelectValue placeholder="Area" />
+          <SelectValue
+            placeholder={
+              recipesFilter.type === "area" ? recipesFilter.value : "Area"
+            }
+          />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>

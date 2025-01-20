@@ -19,6 +19,7 @@ function GlobalStateProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   async function fetchRecipes(url) {
+    console.log('fetch recipes again: ', url)
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -52,6 +53,8 @@ function GlobalStateProvider({ children }) {
   }, [recipesFilter]);
 
   useEffect(() => {
+    console.log("recipesFilter changed", recipesFilter)
+
     if (!recipesFilter.value.trim()) return;
 
     const url = getCurrentApiUrl();
@@ -63,6 +66,7 @@ function GlobalStateProvider({ children }) {
   }
 
   const getPageRecipes = useCallback( (perPage = DEFAULT_PER_PAGE) => {
+    console.log('recipes changed, get page recipes again')
     const indexOfLastPost = currentPage * perPage;
 
     const indexOfFirstPost = indexOfLastPost - perPage;
