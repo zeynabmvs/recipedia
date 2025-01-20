@@ -56,7 +56,7 @@ function GlobalStateProvider({ children }) {
 
     const url = getCurrentApiUrl();
     fetchRecipes(url);
-  }, [recipesFilter]);
+  }, [recipesFilter, getCurrentApiUrl]);
 
   const handlePagination =  (currentPage) => {
     setCurrentPage(currentPage);
@@ -85,6 +85,7 @@ function GlobalStateProvider({ children }) {
         handlePagination,
         currentPage,
         getPageRecipes,
+        recipesFilter,
         setRecipesFilter,
       }}
     >

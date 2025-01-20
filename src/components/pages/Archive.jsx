@@ -7,15 +7,13 @@ import Filters from "components/layout/Filters";
 import Container from "components/common/Container";
 
 function Archive() {
-  const { loading, error, getPageRecipes } = useContext(GlobalStateContext);
+  const { loading, error, getPageRecipes, recipesFilter, setRecipesFilter } =
+    useContext(GlobalStateContext);
 
-  const { setRecipesFilter } = useContext(GlobalStateContext);
-
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const s = searchParams.get("s");
   const categoryParam = searchParams.get("category");
-  const areaParam = searchParams.get("area");
 
   // Set search query from URL
   useEffect(() => {
@@ -28,7 +26,6 @@ function Archive() {
     if (categoryParam) {
       setRecipesFilter({ type: "category", value: categoryParam });
     }
-    // setSearchParams({});
   }, [categoryParam]);
 
   const paginatedRecipes = getPageRecipes();
@@ -36,6 +33,9 @@ function Archive() {
   return (
     <Container>
       <Filters />
+      <h1 className="mb-4">
+        Showing results for {recipesFilter["type"]} : {recipesFilter["value"]}
+      </h1>
       <CardsList
         list={paginatedRecipes}
         error={error}

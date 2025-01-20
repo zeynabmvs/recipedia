@@ -1,4 +1,3 @@
-import useFetch from "src/hooks/useFetch";
 import {
   Select,
   SelectContent,
@@ -7,7 +6,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "components/ui/select";
-import { CATEGORY_LIST_API, AREA_LIST_API } from "src/data";
 import useFilters from "src/hooks/useFilters";
 import { useContext } from "react";
 import { GlobalStateContext } from "src/contexts/GlobalState";
@@ -37,7 +35,7 @@ const Filters = () => {
             {categoriesList &&
               categoriesList &&
               categoriesList.length > 0 &&
-              categoriesList.map((category, index) => (
+              categoriesList.map((category) => (
                 <SelectItem
                   value={category.strCategory}
                   key={category.strCategory}
@@ -58,7 +56,7 @@ const Filters = () => {
             {areaList &&
               areaList &&
               areaList.length > 0 &&
-              areaList.map((area, index) => (
+              areaList.map((area) => (
                 <SelectItem value={area.strArea} key={area.strArea}>
                   {area.strArea}
                 </SelectItem>

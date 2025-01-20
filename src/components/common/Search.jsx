@@ -1,5 +1,5 @@
 import { useRef, useContext } from "react";
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineSearch } from "react-icons/hi";
 import { GlobalStateContext } from "src/contexts/GlobalState";
 

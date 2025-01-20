@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="about relative max-w-none w-full object-cover bg-cover bg-no-repeat bg-center bg-[url('/about-bg.png')] h-[400px] md:h-[567px] flex flex-col items-center justify-around"
+      className="about overflow-hidden relative max-w-none w-full object-cover bg-cover bg-no-repeat bg-center bg-[url('/about-bg.png')] h-[400px] md:h-[567px] flex flex-col items-center justify-around"
     >
       <motion.div
         className="bg-white lg:absolute right-[20%] top-[35%] rounded-2xl p-8 pb-6 w-[300px] md:w-[400px] z-50"
