@@ -1,30 +1,19 @@
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineSearch } from "react-icons/hi";
-import { GlobalStateContext } from "src/contexts/GlobalState";
+import useRecipes from "src/hooks/useRecipes";
 
 const Search = ({ placeholder = "Search for...", className = "" }) => {
-  const searchInputRef = useRef();
   const navigate = useNavigate();
-
-  const { setRecipesFilter } = useContext(GlobalStateContext);
+  const searchInputRef = useRef();
+  const { setRecipesFilter } = useRecipes();
 
   const onSearchHandler = (e) => {
     e.preventDefault();
 
-    const query = searchInputRef.current.value.trim();
-    if (query === "") return;
-
-    // Set search query in global state
-  setRecipesFilter({ type: "search", value: query });
-
-    // Clear search input
-    searchInputRef.current.value = "";
-
-    // Navigate to the search results page
+    setRecipesFilter({ type: "search", value: searchInputRef.current.value });
     navigate({
       pathname: "/recipes",
-      search: `?s=${query}`,
     });
   };
 

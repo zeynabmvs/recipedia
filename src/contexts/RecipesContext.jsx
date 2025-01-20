@@ -1,6 +1,4 @@
 import { createContext, useEffect, useState, useCallback } from "react";
-
-export const GlobalStateContext = createContext(null);
 import {
   DEFAULT_FILTER,
   DEFAULT_PER_PAGE,
@@ -9,17 +7,19 @@ import {
   RECIPES_BY_QUERY_API,
 } from "src/data";
 
-function GlobalStateProvider({ children }) {
+export const RecipesContext = createContext(null);
+
+function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [recipesFilter, setRecipesFilter] = useState({ type: "", value: "" });
 
-  const [recipesFilter, setRecipesFilter] = useState(DEFAULT_FILTER);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  useEffect(() => {
+    console.log("recipes has changed", recipes);
+  }, [recipes]);
 
   async function fetchRecipes(url) {
-    // console.log('fetch recipes again: ', url)
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -37,7 +37,7 @@ function GlobalStateProvider({ children }) {
     }
   }
 
-  const getCurrentApiUrl = useCallback( () => {
+  const currentUrl = () => {
     let url;
 
     if (recipesFilter.type === "category") {
@@ -50,52 +50,30 @@ function GlobalStateProvider({ children }) {
     }
 
     return url;
+  };
+
+  useEffect(() => {
+    console.log("lets fetch new recipes based on", recipesFilter);
+    if (recipesFilter.type !== "" && recipesFilter.value !== "") {
+      const url = currentUrl();
+
+      //reFetch recipes if filter has changed
+      fetchRecipes(url);
+    }
   }, [recipesFilter]);
 
-  useEffect(() => {
-    // console.log("recipesFilter changed", recipesFilter)
-
-    if (!recipesFilter.value.trim()) return;
-
-    const url = getCurrentApiUrl();
-    fetchRecipes(url);
-    console.log('no waiting?')
-  }, [recipesFilter, getCurrentApiUrl]);
-
-  const handlePagination =  (currentPage) => {
-    setCurrentPage(currentPage);
-  }
-
-  const getPageRecipes = useCallback( (perPage = DEFAULT_PER_PAGE) => {
-    // console.log('recipes changed, get page recipes again')
-    const indexOfLastPost = currentPage * perPage;
-
-    const indexOfFirstPost = indexOfLastPost - perPage;
-    return recipes?.slice(indexOfFirstPost, indexOfLastPost);
-  }, [currentPage, recipes]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [recipes]);
-
   return (
-    <GlobalStateContext.Provider
+    <RecipesContext.Provider
       value={{
         recipes,
-        setRecipes,
         loading,
-        setLoading,
         error,
-        setError,
-        handlePagination,
-        currentPage,
-        getPageRecipes,
         recipesFilter,
         setRecipesFilter,
       }}
     >
       {children}
-    </GlobalStateContext.Provider>
+    </RecipesContext.Provider>
   );
 }
-export default GlobalStateProvider;
+export default RecipesProvider;

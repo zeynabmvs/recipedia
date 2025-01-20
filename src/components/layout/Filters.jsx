@@ -7,12 +7,11 @@ import {
   SelectValue,
 } from "components/ui/select";
 import useFilters from "src/hooks/useFilters";
-import { useContext } from "react";
-import { GlobalStateContext } from "src/contexts/GlobalState";
+import useRecipes from "src/hooks/useRecipes";
 
 const Filters = () => {
   const { categoriesList, areaList } = useFilters();
-  const { recipesFilter, setRecipesFilter } = useContext(GlobalStateContext);
+  const { recipesFilter, setRecipesFilter } = useRecipes();
 
   const handleCategoryChange = (newValue) => {
     setRecipesFilter({ type: "category", value: newValue });

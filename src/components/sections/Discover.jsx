@@ -1,12 +1,11 @@
 import Button from "src/components/ui/Button";
-import { useContext } from "react";
-import { GlobalStateContext } from "src/contexts/GlobalState";
 import CardsList from "src/components/common/CardsList";
+import useRecipes from "src/hooks/useRecipes";
 
 const Discover = () => {
-  const { loading, error, getPageRecipes } = useContext(GlobalStateContext);
+  const { loading, error, recipes } = useRecipes();
 
-  const paginatedRecipes = getPageRecipes();
+  // const paginatedRecipes = getPageRecipes();
 
   return (
     <section className="discover z-container">
@@ -15,20 +14,17 @@ const Discover = () => {
         id="discover-header"
       >
         <div>
-          <h2 className="font-medium text-display-3">Discover, Create, Share</h2>
+          <h2 className="font-medium text-display-3">
+            Discover, Create, Share
+          </h2>
           <p className="text-gray-500 text-body-base">
             Check our most popular recipes of this week
           </p>
         </div>
-        <Button label="See all" to={'/recipes'} />
+        <Button label="See all" to={"/recipes"} />
       </div>
 
-      <CardsList
-        list={paginatedRecipes}
-        error={error}
-        loading={loading}
-        count={8}
-      />
+      <CardsList list={recipes} error={error} loading={loading} count={8} />
     </section>
   );
 };

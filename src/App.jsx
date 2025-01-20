@@ -12,16 +12,13 @@ import NotFound from "components/pages/NotFound";
 import GlobalStateProvider from "src/contexts/GlobalState";
 import Archive from "components/pages/Archive";
 import FavoritesProvider from "src/contexts/FavoritesContext";
+import RecipesProvider from "src/contexts/RecipesContext"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Main />}>
       <Route path="/" element={<LandingPage />} />
-
-      {/* <Route path="" element={<WithSidebarLayout />}> */}
       <Route path="/recipes" element={<Archive />} />
-      {/* </Route> */}
-
       <Route path="/recipe/:id" element={<RecipeDetail />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="*" element={<NotFound />} />
@@ -32,9 +29,11 @@ const router = createBrowserRouter(
 function App() {
   return (
     <GlobalStateProvider>
+      <RecipesProvider>
       <FavoritesProvider>
         <RouterProvider router={router}></RouterProvider>
       </FavoritesProvider>
+      </RecipesProvider>
     </GlobalStateProvider>
   );
 }
