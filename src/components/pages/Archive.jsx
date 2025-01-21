@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
 import Container from "components/common/Container";
 import useRecipes from "src/hooks/useRecipes";
-import { DEFAULT_PER_PAGE } from "src/data";
+import { DEFAULT_FILTER } from "src/data";
 import usePagination from "src/hooks/usePagination";
 
 function Archive() {
@@ -13,7 +13,7 @@ function Archive() {
     useRecipes();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const perPage = DEFAULT_PER_PAGE;
+  const perPage = 24;
 
   const { paginatedList, currentPage, handlePageChange } = usePagination(
     recipes,
@@ -49,6 +49,8 @@ function Archive() {
       if (recipesFilter.type !== "area" || recipesFilter.value !== area) {
         setRecipesFilter({ type: "area", value: area });
       }
+    } else if (recipesFilter?.type === "") {
+      setRecipesFilter(DEFAULT_FILTER);
     }
   }, [searchParams, setRecipesFilter]);
 
@@ -66,6 +68,7 @@ function Archive() {
         error={error}
         loading={loading}
         className="mb-20"
+        count={perPage}
       />
       <Pagination
         currentPage={currentPage}

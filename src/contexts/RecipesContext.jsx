@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState, useCallback } from "react";
 import {
-  DEFAULT_FILTER,
   RECIPES_BY_CATEGORY_API,
   RECIPES_BY_AREA_API,
   RECIPES_BY_QUERY_API,
