@@ -23,7 +23,12 @@ function RecipesProvider({ children }) {
       const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
-        setRecipes(data?.meals);
+        if (data?.meals) {
+          setRecipes(data?.meals);
+        } else {
+          // the api returns {"meals": null} when hasn't found any recipes
+          setRecipes([])
+        }
         setLoading(false);
         setError("");
       } else {

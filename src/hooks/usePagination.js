@@ -5,10 +5,11 @@ const usePagination = (items = [], perPage = DEFAULT_PER_PAGE) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [paginatedList, setPaginatdList] = useState([]);
   console.log(perPage)
+  
   useEffect(() => {
     console.log(items);
 
-    if (items.length > 0) {
+    if (items?.length > 0) {
       const indexOfLastPost = currentPage * perPage;
       const indexOfFirstPost = indexOfLastPost - perPage;
       setPaginatdList(items?.slice(indexOfFirstPost, indexOfLastPost));

@@ -1,7 +1,7 @@
 function Pagination({ currentPage, onPageChange, list, perPage }) {
 
   let paginationNumbers = [];
-  const listLength = list.length;
+  const listLength = list?.length;
 
 
   for (let i = 1; i <= Math.ceil(listLength / perPage); i++) {

@@ -9,10 +9,9 @@ import Favorites from "components/pages/Favorites";
 import LandingPage from "components/pages/Landing";
 import Main from "components/Main";
 import NotFound from "components/pages/NotFound";
-import GlobalStateProvider from "src/contexts/GlobalState";
 import Archive from "components/pages/Archive";
 import FavoritesProvider from "src/contexts/FavoritesContext";
-import RecipesProvider from "src/contexts/RecipesContext"
+import RecipesProvider from "src/contexts/RecipesContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,13 +27,11 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <GlobalStateProvider>
-      <RecipesProvider>
+    <RecipesProvider>
       <FavoritesProvider>
         <RouterProvider router={router}></RouterProvider>
       </FavoritesProvider>
-      </RecipesProvider>
-    </GlobalStateProvider>
+    </RecipesProvider>
   );
 }
 
