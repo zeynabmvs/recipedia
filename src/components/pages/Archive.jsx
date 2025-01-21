@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
@@ -6,10 +6,34 @@ import Filters from "components/layout/Filters";
 import Container from "components/common/Container";
 import useRecipes from "src/hooks/useRecipes";
 
+const DEFAULT_PER_PAGE = 5;
+
 function Archive() {
   const { loading, error, recipes, recipesFilter, setRecipesFilter } =
     useRecipes();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [paginatedList, setPaginatdList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const perPage = DEFAULT_PER_PAGE;
+
+  const paginationNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(length / perPage); i++) {
+    paginationNumbers.push(i);
+  }
+
+  useEffect(() => {
+    if (recipes.length > 0) {
+      const indexOfLastPost = currentPage * perPage;
+      const indexOfFirstPost = indexOfLastPost - perPage;
+      setPaginatdList(recipes?.slice(indexOfFirstPost, indexOfLastPost));
+    }
+  }, [recipes, perPage, currentPage]);
 
   useEffect(() => {
     // Extract individual query parameters
@@ -46,12 +70,16 @@ function Archive() {
         Showing results for {recipesFilter?.type} : {recipesFilter?.value}
       </h1>
       <CardsList
-        list={recipes}
+        list={paginatedList}
         error={error}
         loading={loading}
         className="mb-20"
       />
-      {/* <Pagination /> */}
+      <Pagination
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+        paginationNumbers
+      />
     </Container>
   );
 }

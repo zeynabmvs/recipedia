@@ -1,14 +1,16 @@
-import usePagination from "src/hooks/usePagination";
+function Pagination({ currentPage, onPageChange, paginationNumbers }) {
+  const paginate = (pageNumber) => {
+    onPageChange(pageNumber);
+  };
 
-function Pagination() {
-  const { paginationNumbers, handlePagination, currentPage } = usePagination();
+  if (paginationNumbers.length <= 1) return null; // Hide pagination if only one page
 
-  return paginationNumbers.length > 1 ? (
+  return (
     <div className="pagination flex justify-center gap-2 p-4 my-10">
       {paginationNumbers.map((pageNumber, index) => (
         <button
           key={pageNumber}
-          onClick={() => handlePagination(pageNumber)}
+          onClick={() => paginate(pageNumber)}
           className={
             "p-2 bg-slate-50  w-10 h-10 flex items-center justify-center rounded-sm hover:bg-slate-100" +
             (currentPage === index + 1
@@ -20,7 +22,7 @@ function Pagination() {
         </button>
       ))}
     </div>
-  ) : null;
+  );
 }
 
 export default Pagination;

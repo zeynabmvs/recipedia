@@ -58,4 +58,4 @@ export const RECIPES_BY_QUERY_API =
 export const AUTHOR_URL = "https://github.com/zeynabmvs";
 
 export const DEFAULT_FILTER = { type: "category", value: "side" };
-export const DEFAULT_PER_PAGE = 24;
+// export const DEFAULT_PER_PAGE = 24;
