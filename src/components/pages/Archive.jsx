@@ -6,28 +6,19 @@ import Filters from "components/layout/Filters";
 import Container from "components/common/Container";
 import useRecipes from "src/hooks/useRecipes";
 import { DEFAULT_PER_PAGE } from "src/data";
+import usePagination from "src/hooks/usePagination";
 
 function Archive() {
   const { loading, error, recipes, recipesFilter, setRecipesFilter } =
     useRecipes();
-    
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const [paginatedList, setPaginatdList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   const perPage = DEFAULT_PER_PAGE;
 
-  useEffect(() => {
-    if (recipes.length > 0) {
-      const indexOfLastPost = currentPage * perPage;
-      const indexOfFirstPost = indexOfLastPost - perPage;
-      setPaginatdList(recipes?.slice(indexOfFirstPost, indexOfLastPost));
-    }
-  }, [recipes, perPage, currentPage]);
+  const { paginatedList, currentPage, handlePageChange } = usePagination(
+    recipes,
+    perPage
+  );
 
   const handleFilterChange = (newValue) => {
     setRecipesFilter(newValue);
