@@ -7,18 +7,16 @@ import {
   SelectValue,
 } from "components/ui/select";
 import useFilters from "src/hooks/useFilters";
-import useRecipes from "src/hooks/useRecipes";
 
-const Filters = () => {
+const Filters = ({ currentFilter, onFilterChange }) => {
   const { categoriesList, areaList } = useFilters();
-  const { recipesFilter, setRecipesFilter } = useRecipes();
 
   const handleCategoryChange = (newValue) => {
-    setRecipesFilter({ type: "category", value: newValue });
+    onFilterChange({ type: "category", value: newValue });
   };
 
   const handleAreaChange = (newValue) => {
-    setRecipesFilter({ type: "area", value: newValue });
+    onFilterChange({ type: "area", value: newValue });
   };
 
   return (
@@ -29,8 +27,8 @@ const Filters = () => {
         <SelectTrigger className="w-[280px]">
           <SelectValue
             placeholder={
-              recipesFilter.type === "category"
-                ? recipesFilter.value
+              currentFilter.type === "category"
+                ? currentFilter.value
                 : "Category"
             }
           />
@@ -56,7 +54,7 @@ const Filters = () => {
         <SelectTrigger className="w-[280px]">
           <SelectValue
             placeholder={
-              recipesFilter.type === "area" ? recipesFilter.value : "Area"
+              currentFilter.type === "area" ? currentFilter.value : "Area"
             }
           />
         </SelectTrigger>

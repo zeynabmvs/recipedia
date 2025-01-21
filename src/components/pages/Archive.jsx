@@ -5,12 +5,12 @@ import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
 import Container from "components/common/Container";
 import useRecipes from "src/hooks/useRecipes";
-
-const DEFAULT_PER_PAGE = 5;
+import { DEFAULT_PER_PAGE } from "src/data";
 
 function Archive() {
   const { loading, error, recipes, recipesFilter, setRecipesFilter } =
     useRecipes();
+    
   const [searchParams, setSearchParams] = useSearchParams();
   const [paginatedList, setPaginatdList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,12 +21,6 @@ function Archive() {
 
   const perPage = DEFAULT_PER_PAGE;
 
-  const paginationNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(length / perPage); i++) {
-    paginationNumbers.push(i);
-  }
-
   useEffect(() => {
     if (recipes.length > 0) {
       const indexOfLastPost = currentPage * perPage;
@@ -34,6 +28,10 @@ function Archive() {
       setPaginatdList(recipes?.slice(indexOfFirstPost, indexOfLastPost));
     }
   }, [recipes, perPage, currentPage]);
+
+  const handleFilterChange = (newValue) => {
+    setRecipesFilter(newValue);
+  };
 
   useEffect(() => {
     // Extract individual query parameters
@@ -65,7 +63,10 @@ function Archive() {
 
   return (
     <Container>
-      <Filters />
+      <Filters
+        currentFilter={recipesFilter}
+        onFilterChange={handleFilterChange}
+      />
       <h1 className="mb-4">
         Showing results for {recipesFilter?.type} : {recipesFilter?.value}
       </h1>
@@ -78,7 +79,8 @@ function Archive() {
       <Pagination
         currentPage={currentPage}
         onPageChange={handlePageChange}
-        paginationNumbers
+        list={recipes}
+        perPage={perPage}
       />
     </Container>
   );
