@@ -2,15 +2,15 @@ export const footerNavigation = {
   connect: [
     {
       name: "Twitter",
-      href: "https://twitter.com/justansub",
+      href: "#",
     },
     {
       name: "Github",
-      href: "https://www.youtube.com/@SpeedyBrand-SEO",
+      href: "#",
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/company/speedy-brand-inc/",
+      href: "#",
     },
   ],
 

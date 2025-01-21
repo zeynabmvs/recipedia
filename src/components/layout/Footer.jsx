@@ -38,7 +38,7 @@ const TwoColumnFooter = () => {
                   <div key={item.name}>
                     <a
                       href={item.href}
-                      target="_blank"
+                      // target="_blank"
                       rel="noreferrer"
                       className="leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-200"
                     >
