@@ -32,6 +32,7 @@ function Archive() {
 
     // Determine the filter type and value based on query parameters
     if (searchQuery) {
+      console.log('searching for', searchQuery)
       if (
         recipesFilter.type !== "search" ||
         recipesFilter.value !== searchQuery

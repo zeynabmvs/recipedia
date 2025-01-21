@@ -11,24 +11,31 @@ const Search = ({ placeholder = "Search for...", className = "" }) => {
   const onSearchHandler = (e) => {
     e.preventDefault();
 
-    setRecipesFilter({ type: "search", value: searchInputRef.current.value });
-    navigate({
-      pathname: "/recipes",
-    });
+    const value = searchInputRef.current.value
+    if (value.trim() !=='') {
+      console.log('lets search for', value)
+      setRecipesFilter({ type: "search", value: value});
+      navigate({
+        pathname: "/recipes",
+      });
+    }
+    
   };
 
   return (
     <form
       onSubmit={onSearchHandler}
-      className={`relative w-full md:w-auto ${className}`}
+      className={`relative w-full md:w-auto flex items-center h-10 ${className}`}
     >
-      <HiOutlineSearch className="absolute top-[11px] left-2" size={16} />
       <input
         type="text"
         placeholder={placeholder}
-        className="border border-slate-200 p-2 w-full md:w-60 rounded-full pl-8 text-body-sm"
+        className="border border-primary py-2 px-4 w-full md:w-60 rounded-full text-body-sm h-10"
         ref={searchInputRef}
       ></input>
+      <button onClick={onSearchHandler} className="p-2 bg-primary rounded-r-full h-[38px] w-[38px] absolute right-0">
+        <HiOutlineSearch className="" size={22}  color="white" />
+      </button>
     </form>
   );
 };
