@@ -43,7 +43,8 @@ function RecipeDetail() {
     return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
 
   return (
-    <Container className="flex flex-col md:flex-row gap-8 items-start mb-40">
+    <Container className="mb-40 pt-10 lg:pt-20">
+      <div className="flex flex-col-reverse md:flex-row gap-8 items-start mb-8">
       <DetailsSection
         recipeDetail={recipeDetail}
         ingredients={ingredients}
@@ -51,6 +52,8 @@ function RecipeDetail() {
         handleFavorite={handleFavorite}
       />
       <ImageSection imgUrl={recipeDetail?.strMealThumb} />
+      </div>
+      <Instructions instructions={recipeDetail?.strInstructions} />
     </Container>
   );
 }
@@ -58,7 +61,7 @@ function RecipeDetail() {
 // Stateless component for the image section
 const ImageSection = ({ imgUrl }) => {
   return (
-    <div className="basis-1/3 flex justify-center">
+    <div className="basis-1/3 flex justify-center mx-auto md:mx-0">
       <img src={imgUrl} className="block w-full rounded-lg"></img>
     </div>
   );
@@ -86,7 +89,6 @@ const DetailsSection = ({
       area={recipeDetail?.strArea}
     />
     <IngredientsList ingredients={ingredients} />
-    <Instructions instructions={recipeDetail?.strInstructions} />
   </div>
 );
 
