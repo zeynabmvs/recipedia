@@ -5,9 +5,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontSize: {
-      "display-1": ["clamp(2.8rem, 2.5rem + 1vw, 4rem)", "1.2"],
-      "display-2": ["clamp(2.5rem, 2rem + 1vw, 4rem)", "1.1"],
-      "display-3": ["clamp(2rem, 1.5rem + 1vw, 3.5rem)", "1.4"],
+      "display-1": ["clamp(2rem, 2.5rem + 1vw, 4rem)", "1.2"],
+      "display-2": ["clamp(1.7rem, 2rem + 1vw, 4rem)", "1.1"],
+      "display-3": ["clamp(1.3rem, 1.5rem + 1vw, 3.5rem)", "1.4"],
       btn: ["clamp(1rem, 0.8rem + 0.5vw, 1.25rem)", "1.5"],
       "body-lg": ["clamp(1.125rem, 0.9rem + 0.5vw, 1.375rem)", "1.6"],
       "body-base": ["clamp(0.875rem, 0.7rem + 0.5vw, 1rem)", "1.4"],

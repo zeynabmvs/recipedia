@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <>
       <section className="z-container flex justify-center items-center flex-col-reverse lg:flex-row relative lg:pt-10">
-        <div className="space-y-8 text-center lg:text-left w-[58%]">
+        <div className="space-y-8 text-center lg:text-left lg:w-[58%]">
           <h1 className="font-bold text-display-1">
             Cooking Made Fun and Easy: Unleash Your Inner Chef
           </h1>
@@ -26,7 +26,7 @@ const Hero = () => {
           </p>
           <Button label="Explore recipes" to={"/recipes"} />
         </div>
-        <motion.div className="relative">
+        <motion.div className="relative md:pb-8 lg:pb-0">
           <img src="/hero-dish.png" alt="" />
           <motion.div
             initial="initial"

@@ -9,7 +9,7 @@ const About = () => {
     >
       <motion.div
         className="bg-white lg:absolute right-[20%] top-[35%] rounded-2xl p-8 pb-6 w-[300px] md:w-[400px] z-50"
-        initial={{ opacity: 0, x: 500 }}
+        initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{
           duration: 0.5,

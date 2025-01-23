@@ -6,7 +6,7 @@ import Container from "components/common/Container";
 function Header() {
   return (
     <Container
-      className="flex flex-col md:flex-row justify-between items-center my-4 gap-4 pb-10"
+      className="flex flex-col md:flex-row justify-between items-center my-4 gap-4 "
       Element="header"
     >
       <Logo />
