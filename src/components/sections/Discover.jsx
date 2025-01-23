@@ -5,8 +5,6 @@ import useRecipes from "src/hooks/useRecipes";
 const Discover = () => {
   const { loading, error, recipes } = useRecipes();
 
-  // const paginatedRecipes = getPageRecipes();
-
   return (
     <section className="discover z-container">
       <div

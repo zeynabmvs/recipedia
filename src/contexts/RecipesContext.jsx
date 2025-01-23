@@ -3,6 +3,7 @@ import {
   RECIPES_BY_CATEGORY_API,
   RECIPES_BY_AREA_API,
   RECIPES_BY_QUERY_API,
+  DEFAULT_FILTER,
 } from "src/data";
 
 export const RecipesContext = createContext(null);
@@ -11,7 +12,7 @@ function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [recipesFilter, setRecipesFilter] = useState({ type: "", value: "" });
+  const [recipesFilter, setRecipesFilter] = useState(DEFAULT_FILTER);
 
   useEffect(() => {
     console.log("recipes has changed", recipes);

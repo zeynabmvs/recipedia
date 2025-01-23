@@ -56,19 +56,19 @@ function Archive() {
   }, [searchParams, setRecipesFilter]);
 
   return (
-    <Container>
+    <Container className="pt-10 lg:pt-20">
       <Filters
         currentFilter={recipesFilter}
         onFilterChange={handleFilterChange}
       />
       <h1 className="mb-4">
-        Showing results for {recipesFilter?.type} : {recipesFilter?.value}
+        Found {recipes?.length} results for {recipesFilter?.type} : {recipesFilter?.value}
       </h1>
       <CardsList
         list={paginatedList}
         error={error}
         loading={loading}
-        className="mb-20"
+        className="mb-10 lg:mb-20"
         count={perPage}
       />
       <Pagination
