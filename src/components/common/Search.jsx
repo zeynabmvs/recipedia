@@ -25,12 +25,12 @@ const Search = ({ placeholder = "Search for...", className = "" }) => {
   return (
     <form
       onSubmit={onSearchHandler}
-      className={`relative w-full md:w-auto flex items-center h-10 ${className}`}
+      className={`relative w-full lg:w-auto flex items-center h-10 ${className}`}
     >
       <input
         type="text"
         placeholder={placeholder}
-        className="border border-primary py-2 px-4 w-full md:w-60 rounded-full text-body-sm h-10"
+        className="border border-primary py-2 px-4 w-full lg:w-60 rounded-full text-body-sm h-10"
         ref={searchInputRef}
       ></input>
       <button onClick={onSearchHandler} className="p-2 bg-primary rounded-r-full h-[38px] w-[38px] absolute right-0">

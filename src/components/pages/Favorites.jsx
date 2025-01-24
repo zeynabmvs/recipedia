@@ -14,8 +14,8 @@ function Favorites() {
   );
 
   return (
-    <Container className="mb-40">
-      <h1 className="mb-6 text-body-lg">My favorite recipes</h1>
+    <Container className="mb-40 pt-10 lg:pt-20">
+      <h1 className="mb-6 text-display-3">My favorite recipes</h1>
       <CardsList list={paginatedList} />
       <Pagination
         list={favorites}
