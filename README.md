@@ -1,6 +1,6 @@
 # Recipedia
 
-Welcome to the **Recipedia**, a simple and intuitive web application built with **React**, **React Router DOM**, and **Tailwind CSS**. This app allows users to search for and explore a wide variety of food recipes using the [TheMealDB API](https://www.themealdb.com/api.php). Additionally, users can save their favorite recipes to local storage for easy access later.
+Welcome to the **Recipedia**, a simple and intuitive web application built with **React**, **React Router DOM**, **Framer motion** and **Tailwind CSS**. This app allows users to search for and explore a wide variety of food recipes using the [TheMealDB API](https://www.themealdb.com/api.php). Additionally, users can save their favorite recipes to local storage for easy access later.
 
 ---
 
@@ -33,12 +33,12 @@ Here are my plans for further development and improvements to the app:
 
 - [x] **UI Enhancements**: Add more UI components and animations to make the app more visually appealing. Use libraries like Framer Motion for animations.
 
-- [x] **Performance Optimization**: Use useMemo in the context to optimize performance by memoizing expensive calculations and preventing unnecessary re-renders.
+- [x] **Performance Optimization**: Use useMemo & useCallback in the context to optimize performance by memoizing expensive calculations and preventing unnecessary re-renders.
 
 ---
 
-## Demo
-Check out the live demo of the app [here on vercel](https://food-recipe-react-dun.vercel.app/).
+## Live site
+Check out the live app [deployed on vercel](https://food-recipe-react-dun.vercel.app/).
 
 
 ---

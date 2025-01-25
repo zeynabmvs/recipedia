@@ -14,57 +14,52 @@ function RecipesProvider({ children }) {
   const [error, setError] = useState(null);
   const [recipesFilter, setRecipesFilter] = useState(DEFAULT_FILTER);
 
-  useEffect(() => {
-    console.log("recipes has changed", recipes);
-  }, [recipes]);
-
-  async function fetchRecipes(url) {
-    try {
-      setLoading(true);
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        if (data?.meals) {
-          setRecipes(data?.meals);
-        } else {
-          // the api returns {"meals": null} when hasn't found any recipes
-          setRecipes([])
-        }
-        setLoading(false);
-        setError("");
-      } else {
-        throw new Error(response.statusText);
-      }
-    } catch (error) {
-      setError(error);
-      setLoading(false);
-    }
-  }
-
-  const currentUrl = () => {
-    let url;
-
+  const currentUrl = useCallback(() => {
     if (recipesFilter.type === "category") {
-      url = RECIPES_BY_CATEGORY_API + recipesFilter.value;
+      return RECIPES_BY_CATEGORY_API + recipesFilter.value;
     } else if (recipesFilter.type === "area") {
-      url = RECIPES_BY_AREA_API + recipesFilter.value;
-    } else {
-      if (recipesFilter.value.trim() === "") return;
-      url = RECIPES_BY_QUERY_API + recipesFilter.value;
+      return RECIPES_BY_AREA_API + recipesFilter.value;
+    } else if (
+      recipesFilter.type === "query" &&
+      recipesFilter.value.trim() !== ""
+    ) {
+      return RECIPES_BY_QUERY_API + recipesFilter.value;
     }
-
-    return url;
-  };
+    return null;
+  }, [recipesFilter]);
 
   useEffect(() => {
-    console.log("lets fetch new recipes based on", recipesFilter);
+    async function fetchRecipes(url) {
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          if (data?.meals) {
+            setRecipes(data?.meals);
+          } else {
+            // the api returns {"meals": null} when hasn't found any recipes
+            setRecipes([]);
+          }
+          setLoading(false);
+          setError("");
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (error) {
+        setError(error);
+        setLoading(false);
+      }
+    }
+
+    // console.log("lets fetch new recipes based on", recipesFilter);
     if (recipesFilter.type !== "" && recipesFilter.value !== "") {
       const url = currentUrl();
 
       //reFetch recipes if filter has changed
       fetchRecipes(url);
     }
-  }, [recipesFilter]);
+  }, [recipesFilter, currentUrl]);
 
   return (
     <RecipesContext.Provider
