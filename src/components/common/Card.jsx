@@ -16,7 +16,7 @@ function Card({ recipe }) {
           <span>{recipe.strArea}</span>
         </div> */}
         <div className="p-2 md:p-4 absolute bottom-0 left-0 w-full bg-white/85">
-          <h1 className="truncate block font-medium text-body-lg">
+          <h1 className="block font-medium text-body-lg">
             {recipe?.strMeal}
           </h1>
           <span className="tracking-wider text-primary underline underline-offset-2 text-body-sm">
