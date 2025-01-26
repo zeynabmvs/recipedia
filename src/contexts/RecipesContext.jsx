@@ -34,7 +34,6 @@ function RecipesProvider({ children }) {
   useEffect(() => {
 
     async function fetchRecipes(url) {
-    console.log(url)
     if (!url) return
       try {
         setLoading(true);
