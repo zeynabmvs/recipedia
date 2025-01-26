@@ -7,10 +7,17 @@ import Container from "components/common/Container";
 import useRecipes from "src/hooks/useRecipes";
 import { DEFAULT_FILTER } from "src/data";
 import usePagination from "src/hooks/usePagination";
+import IngredientsList from "components/common/IngredientsList";
 
 function Archive() {
-  const { loading, error, recipes, recipesFilter, setRecipesFilter } =
-    useRecipes();
+  const {
+    loading,
+    error,
+    recipes,
+    recipesFilter,
+    setRecipesFilter,
+    ingrediants,
+  } = useRecipes();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const perPage = 24;
@@ -22,7 +29,7 @@ function Archive() {
 
   const handleFilterChange = (newValue) => {
     setRecipesFilter(newValue);
-    handlePageChange(1)
+    handlePageChange(1);
   };
 
   useEffect(() => {
@@ -61,8 +68,11 @@ function Archive() {
         currentFilter={recipesFilter}
         onFilterChange={handleFilterChange}
       />
+      {/* <IngredientsList list={ingrediants} /> */}
+
       <h1 className="mb-4">
-        Found {recipes?.length} results for {recipesFilter?.type} : {recipesFilter?.value}
+        Found {recipes?.length} results for {recipesFilter?.type} :{" "}
+        {recipesFilter?.value}
       </h1>
       <CardsList
         list={paginatedList}

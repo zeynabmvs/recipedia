@@ -6,6 +6,12 @@ import Loading from "components/ui/Loading";
 import { RECIPE_DETAIL_API } from "src/data";
 import useFavorites from "src/hooks/useFavorites";
 import Container from "components/common/Container";
+import {
+  RECIPES_BY_CATEGORY_API,
+  FILTER_BY_INGREDIENT_API,
+  RECIPES_BY_AREA_API,
+} from "src/data";
+import CardsList from "../common/CardsList";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -43,17 +49,19 @@ function RecipeDetail() {
     return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
 
   return (
-    <Container className="mb-40 pt-10 lg:pt-20">
+    <Container className="flex flex-col  gap-4 mb-40 pt-10 lg:pt-20">
       <div className="flex flex-col-reverse md:flex-row gap-8 items-start mb-8">
-      <DetailsSection
-        recipeDetail={recipeDetail}
-        ingredients={ingredients}
-        isFavorite={isFavorite}
-        handleFavorite={handleFavorite}
-      />
-      <ImageSection imgUrl={recipeDetail?.strMealThumb} />
+        <DetailsSection
+          recipeDetail={recipeDetail}
+          ingredients={ingredients}
+          isFavorite={isFavorite}
+          handleFavorite={handleFavorite}
+        />
+        <ImageSection imgUrl={recipeDetail?.strMealThumb} />
       </div>
       <Instructions instructions={recipeDetail?.strInstructions} />
+      <TagsList tagsList={recipeDetail?.strTags} />
+      <RelatedRecipes relatedBy={recipeDetail?.strCategory} />
     </Container>
   );
 }
@@ -125,5 +133,41 @@ const CategoryArea = ({ category, area }) => (
     </h3>
   </div>
 );
+
+const TagsList = ({ tagsList }) => {
+  if (!tagsList) return null;
+
+  return (
+    <h3 className="font-bold">
+      Tags: <span className="font-light">{tagsList}</span>
+    </h3>
+  );
+};
+
+const RelatedRecipes = ({ filterType = "category", relatedBy }) => {
+  const url = () => {
+    if (filterType === "category") {
+      return RECIPES_BY_CATEGORY_API + relatedBy;
+    } else if (filterType === "area") {
+      return RECIPES_BY_AREA_API + relatedBy;
+    } else if (filterType === "mainIngredient") {
+      return FILTER_BY_INGREDIENT_API + relatedBy;
+    }
+  };
+
+  const { data, pending, error } = useFetch(url());
+
+  const list = data?.meals;
+  if (error) return <Error message={error} />;
+  if (pending) return <Loading />;
+  if (list?.length === 0) return <p className="text-center">Nothing found</p>;
+
+  return (
+    <>
+      <h2 className="text-display-3 font-medium">Related recipes</h2>
+      <CardsList list={list} error={error} loading={pending} count={4} />
+    </>
+  );
+};
 
 export default RecipeDetail;
