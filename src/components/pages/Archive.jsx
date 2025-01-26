@@ -9,13 +9,8 @@ import { DEFAULT_FILTER } from "src/data";
 import usePagination from "src/hooks/usePagination";
 
 function Archive() {
-  const {
-    loading,
-    error,
-    recipes,
-    recipesFilter,
-    setRecipesFilter,
-  } = useRecipes();
+  const { loading, error, recipes, recipesFilter, setRecipesFilter } =
+    useRecipes();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const perPage = 24;
@@ -67,8 +62,9 @@ function Archive() {
         onFilterChange={handleFilterChange}
       />
       <h1 className="mb-4">
-        Found {recipes?.length} results for {recipesFilter?.type} :{" "}
-        {recipesFilter?.value}
+        {!loading && !error
+          ? `Found ${recipes?.length} results for ${recipesFilter?.type} : ${recipesFilter?.value}`
+          : ""}
       </h1>
       <CardsList
         list={paginatedList}
