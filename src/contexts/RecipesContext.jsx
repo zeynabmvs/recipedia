@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, useCallback } from "react";
+import axios from "axios";
 import {
   RECIPES_BY_CATEGORY_API,
   RECIPES_BY_AREA_API,
@@ -32,40 +33,46 @@ function RecipesProvider({ children }) {
   }, [recipesFilter]);
 
   useEffect(() => {
+    const controller = new AbortController(); // Create an AbortController instance
 
     async function fetchRecipes(url) {
-    if (!url) return
+      if (!url) return; // Exit if no URL is provided
+
       try {
         setLoading(true);
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data)
 
-          if (data?.meals) {
-            setRecipes(data?.meals);
-          } else {
-            // the api returns {"meals": null} when hasn't found any recipes
-            setRecipes([]);
-          }
-          setLoading(false);
-          setError("");
+        const response = await axios.get(url, {
+          signal: controller.signal, // Attach the AbortController's signal
+        });
+
+        if (response.data?.meals) {
+          setRecipes(response.data.meals);
         } else {
-          throw new Error(response.statusText);
+          // The API returns {"meals": null} when no recipes are found
+          setRecipes([]);
         }
+        setError(null);
       } catch (error) {
-        setError(error?.message || 'an Unexpected error happened');
+        if (axios.isCancel(error)) {
+          console.log("Request canceled:", error.message); // Handle request cancellation
+        } else {
+          setError(error?.message || "An unexpected error occurred");
+        }
+      } finally {
         setLoading(false);
       }
     }
 
-    // console.log("lets fetch new recipes based on", recipesFilter);
+    // Fetch recipes if filter type and value are valid
     if (recipesFilter.type !== "" && recipesFilter.value !== "") {
       const url = currentUrl();
-
-      //reFetch recipes if filter has changed
       fetchRecipes(url);
     }
+
+    // Cleanup function to cancel the request if the component unmounts or the filter changes
+    return () => {
+      controller.abort();
+    };
   }, [recipesFilter, currentUrl]);
 
   return (
