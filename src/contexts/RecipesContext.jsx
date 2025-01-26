@@ -4,7 +4,7 @@ import {
   RECIPES_BY_AREA_API,
   RECIPES_BY_QUERY_API,
   DEFAULT_FILTER,
-  INGREDIENTS_LIST_API,
+  FILTER_BY_INGREDIENT_API,
 } from "src/data";
 
 export const RecipesContext = createContext(null);
@@ -14,13 +14,14 @@ function RecipesProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recipesFilter, setRecipesFilter] = useState(DEFAULT_FILTER);
-  const [ingrediants, setIngrediants] = useState([]);
 
   const currentUrl = useCallback(() => {
     if (recipesFilter.type === "category") {
       return RECIPES_BY_CATEGORY_API + recipesFilter.value;
     } else if (recipesFilter.type === "area") {
       return RECIPES_BY_AREA_API + recipesFilter.value;
+    } else if (recipesFilter.type === "ingredient") {
+      return FILTER_BY_INGREDIENT_API + recipesFilter.value;
     } else if (
       recipesFilter.type === "query" &&
       recipesFilter.value.trim() !== ""
@@ -31,30 +32,17 @@ function RecipesProvider({ children }) {
   }, [recipesFilter]);
 
   useEffect(() => {
-    if (ingrediants.length > 0) return;
 
-    async function fetchIngredientsData() {
-      try {
-        const response = await fetch(INGREDIENTS_LIST_API);
-        if (response.ok) {
-          const data = await response.json();
-          setIngrediants(data?.meals);
-        }
-      } catch (error) {
-        console.log("error on fetching ingredients", error);
-      }
-    }
-
-    fetchIngredientsData();
-  }, []);
-
-  useEffect(() => {
     async function fetchRecipes(url) {
+    console.log(url)
+    if (!url) return
       try {
         setLoading(true);
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
+          console.log(data)
+
           if (data?.meals) {
             setRecipes(data?.meals);
           } else {
@@ -67,7 +55,7 @@ function RecipesProvider({ children }) {
           throw new Error(response.statusText);
         }
       } catch (error) {
-        setError(error);
+        setError(error?.message || 'an Unexpected error happened');
         setLoading(false);
       }
     }
@@ -89,7 +77,6 @@ function RecipesProvider({ children }) {
         error,
         recipesFilter,
         setRecipesFilter,
-        ingrediants,
       }}
     >
       {children}

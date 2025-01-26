@@ -58,7 +58,8 @@ export const RECIPES_BY_QUERY_API =
 export const INGREDIENTS_LIST_API =
   "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
 export const FILTER_BY_INGREDIENT_API =
-  "www.themealdb.com/api/json/v1/1/filter.php?i=";
+  "https://www.themealdb.com/api/json/v1/1/filter.php?i=";
+  
 export const AUTHOR_URL = "https://github.com/zeynabmvs";
 
 export const DEFAULT_FILTER = { type: "category", value: "chicken" };

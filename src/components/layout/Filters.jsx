@@ -9,7 +9,7 @@ import {
 import useFilters from "src/hooks/useFilters";
 
 const Filters = ({ currentFilter, onFilterChange }) => {
-  const { categoriesList, areaList } = useFilters();
+  const { categoriesList, areaList, ingredientList } = useFilters();
 
   const handleCategoryChange = (newValue) => {
     onFilterChange({ type: "category", value: newValue });
@@ -17,6 +17,13 @@ const Filters = ({ currentFilter, onFilterChange }) => {
 
   const handleAreaChange = (newValue) => {
     onFilterChange({ type: "area", value: newValue });
+  };
+
+  const handleIngredientChange = (newValue) => {
+    onFilterChange({
+      type: "ingredient",
+      value: newValue.split(" ").join("_"),
+    });
   };
 
   return (
@@ -66,6 +73,33 @@ const Filters = ({ currentFilter, onFilterChange }) => {
                 areaList.map((area) => (
                   <SelectItem value={area.strArea} key={area.strArea}>
                     {area.strArea}
+                  </SelectItem>
+                ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <Select onValueChange={(value) => handleIngredientChange(value)}>
+          <SelectTrigger className="w-[280px]">
+            <SelectValue
+              placeholder={
+                currentFilter.type === "ingredient"
+                  ? currentFilter.value
+                  : "Ingredient"
+              }
+            />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {ingredientList &&
+                ingredientList &&
+                ingredientList.length > 0 &&
+                ingredientList.map((item) => (
+                  <SelectItem
+                    value={item.strIngredient}
+                    key={item.idIngredient}
+                  >
+                    {item.strIngredient}
                   </SelectItem>
                 ))}
             </SelectGroup>
