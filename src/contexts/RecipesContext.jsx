@@ -24,7 +24,7 @@ function RecipesProvider({ children }) {
     } else if (recipesFilter.type === "ingredient") {
       return FILTER_BY_INGREDIENT_API + recipesFilter.value;
     } else if (
-      recipesFilter.type === "query" &&
+      recipesFilter.type === "search" &&
       recipesFilter.value.trim() !== ""
     ) {
       return RECIPES_BY_QUERY_API + recipesFilter.value;
@@ -36,6 +36,7 @@ function RecipesProvider({ children }) {
     const controller = new AbortController(); // Create an AbortController instance
 
     async function fetchRecipes(url) {
+      // console.log(url)
       if (!url) return; // Exit if no URL is provided
 
       try {
