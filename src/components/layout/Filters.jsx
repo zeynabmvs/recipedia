@@ -19,12 +19,14 @@ const Filters = ({ currentFilter, onFilterChange }) => {
     onFilterChange({ type: "area", value: newValue });
   };
 
-  const handleIngredientChange = (newValue) => {
-    onFilterChange({
-      type: "ingredient",
-      value: newValue.split(" ").join("_"),
-    });
-  };
+  // Commenting ingredient filter because it's too slow and long
+
+  // const handleIngredientChange = (newValue) => {
+  //   onFilterChange({
+  //     type: "ingredient",
+  //     value: newValue.split(" ").join("_"),
+  //   });
+  // };
 
   return (
     <div className="mb-6 md:mb-10 flex flex-col md:flex-row justify-start gap-2 lg:gap-4 ">
@@ -79,7 +81,7 @@ const Filters = ({ currentFilter, onFilterChange }) => {
           </SelectContent>
         </Select>
 
-        <Select onValueChange={(value) => handleIngredientChange(value)}>
+        {/* <Select onValueChange={(value) => handleIngredientChange(value)}>
           <SelectTrigger className="w-[280px]">
             <SelectValue
               placeholder={
@@ -104,7 +106,7 @@ const Filters = ({ currentFilter, onFilterChange }) => {
                 ))}
             </SelectGroup>
           </SelectContent>
-        </Select>
+        </Select> */}
       </div>
     </div>
   );

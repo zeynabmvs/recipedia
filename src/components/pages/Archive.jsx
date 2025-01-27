@@ -38,6 +38,7 @@ function Archive() {
       />
       <ResultInfo
         loading={loading}
+        error={error}
         length={recipes?.length}
         filterType={recipesFilter?.type}
         filterValue={recipesFilter?.value}
@@ -59,14 +60,14 @@ function Archive() {
   );
 }
 
-const ResultInfo = ({ loading, length = 0, filterType, filterValue }) => {
+const ResultInfo = ({ loading, error, length = 0, filterType, filterValue }) => {
   const filterValueDisplay = filterValue?.split("_").join(" ");
 
-  if (loading || filterType === "") return "loading";
+  if (error ) return " ";
 
   return (
     <h1 className="mb-4">
-      Found {length} results for {filterType} : {filterValueDisplay}
+      {loading ? 'Searching for ' : `Found ${length} results for ` } {filterType} : {filterValueDisplay}
     </h1>
   );
 };
