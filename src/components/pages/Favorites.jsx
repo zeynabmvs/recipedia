@@ -1,8 +1,9 @@
 import CardsList from "components/common/CardsList";
 import useFavorites from "src/hooks/useFavorites";
 import Container from "components/common/Container";
-import Pagination from "../common/Pagination";
+import Pagination from "components/common/Pagination";
 import usePagination from "src/hooks/usePagination";
+import TitleBox from "components/common/TitleBox";
 
 function Favorites() {
   const { favorites } = useFavorites();
@@ -15,7 +16,7 @@ function Favorites() {
 
   return (
     <Container className="mb-40 pt-10 lg:pt-20">
-      <h1 className="mb-6 text-display-3">My favorite recipes</h1>
+      <TitleBox Element='h1'>My favorite recipes</TitleBox>
       <CardsList list={paginatedList} />
       <Pagination
         list={favorites}

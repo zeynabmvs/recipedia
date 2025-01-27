@@ -51,7 +51,7 @@ const TwoColumnFooter = () => {
             <div>
               <div>
                 <h3 className="font-semibold leading-6 text-gray-900 dark:text-gray-200">
-                  Categories
+                  Quick access
                 </h3>
                 <div className="mt-6 space-y-4">
                   {footerNavigation.Categories.map((item) => (

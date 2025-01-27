@@ -9,7 +9,7 @@ import axios from "axios";
 function useFilters() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [areaList, setAreaList] = useState([]);
-  const [ingredientList, setIngredientList] = useState([]);
+  // const [ingredientList, setIngredientList] = useState([]);
 
   useEffect(() => {
     // Create an AbortController instance
@@ -47,25 +47,25 @@ function useFilters() {
       }
     };
 
-    const fetchIngredients = async () => {
-      try {
-        const response = await axios.get(INGREDIENTS_LIST_API, {
-          signal: controller.signal,
-        });
-        setIngredientList(response.data.meals || []);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log("Fetch ingredients request canceled:", error.message);
-        } else {
-          console.error("Error fetching ingredients:", error.message);
-        }
-      }
-    };
+    // const fetchIngredients = async () => {
+    //   try {
+    //     const response = await axios.get(INGREDIENTS_LIST_API, {
+    //       signal: controller.signal,
+    //     });
+    //     setIngredientList(response.data.meals || []);
+    //   } catch (error) {
+    //     if (axios.isCancel(error)) {
+    //       console.log("Fetch ingredients request canceled:", error.message);
+    //     } else {
+    //       console.error("Error fetching ingredients:", error.message);
+    //     }
+    //   }
+    // };
 
     // Call the fetch functions
     fetchAreas();
     fetchCategories();
-    fetchIngredients();
+    // fetchIngredients();
 
     // Cleanup function to cancel requests on component unmount
     return () => {
@@ -76,7 +76,7 @@ function useFilters() {
   return {
     categoriesList,
     areaList,
-    ingredientList,
+    // ingredientList,
   };
 }
 

@@ -11,7 +11,8 @@ import {
   FILTER_BY_INGREDIENT_API,
   RECIPES_BY_AREA_API,
 } from "src/data";
-import CardsList from "../common/CardsList";
+import CardsList from "components/common/CardsList";
+import TitleBox from "components/common/TitleBox";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -61,7 +62,7 @@ function RecipeDetail() {
       </div>
       <Instructions instructions={recipeDetail?.strInstructions} />
       <TagsList tagsList={recipeDetail?.strTags} />
-      <RelatedRecipes relatedBy={recipeDetail?.strCategory} />
+      {/* <RelatedRecipes relatedBy={recipeDetail?.strCategory} /> */}
     </Container>
   );
 }
@@ -164,7 +165,7 @@ const RelatedRecipes = ({ filterType = "category", relatedBy }) => {
 
   return (
     <>
-      <h2 className="text-display-3 font-medium">Related recipes</h2>
+      <TitleBox Element="h2">Related recipes</TitleBox>
       <CardsList list={list} error={error} loading={pending} count={4} />
     </>
   );

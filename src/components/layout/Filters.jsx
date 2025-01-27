@@ -9,7 +9,7 @@ import {
 import useFilters from "src/hooks/useFilters";
 
 const Filters = ({ currentFilter, onFilterChange }) => {
-  const { categoriesList, areaList, ingredientList } = useFilters();
+  const { categoriesList, areaList } = useFilters();
 
   const handleCategoryChange = (newValue) => {
     onFilterChange({ type: "category", value: newValue });
