@@ -5,7 +5,8 @@ const CategoryCard = ({ category }) => {
   return (
     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
       <Link
-        to={`/recipes?category=${category.strCategory}`}
+        to="/recipes"
+        state={{ type: "category", value: category.strCategory }}
         key={category.idCategory}
       >
         <article

@@ -15,10 +15,11 @@ export const footerNavigation = {
   ],
 
   Categories: [
-    { name: "Beef", href: "/recipes?category=beef" },
-    { name: "Mexican", href: "/recipes?area=mexican" },
-    { name: "Pasta", href: "/recipes?category=pasta" },
-    { name: "Side", href: "/recipes?category=side" },
+    { name: "Explore recipes", href: "/recipes" },
+    { name: "Favorites", href: "/favorites" },
+    { name: "Recipe of the day", href: "#" },
+    { name: "Venetian Duck Ragu", href: "/recipe/52838" },
+    { name: "Cream Cheese Tart", href: "/recipe/52779" },
   ],
 };
 

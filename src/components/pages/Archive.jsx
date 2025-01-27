@@ -1,18 +1,17 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CardsList from "components/common/CardsList";
 import Pagination from "components/common/Pagination";
 import Filters from "components/layout/Filters";
 import Container from "components/common/Container";
 import useRecipes from "src/hooks/useRecipes";
-import { DEFAULT_FILTER } from "src/data";
 import usePagination from "src/hooks/usePagination";
 
 function Archive() {
   const { loading, error, recipes, recipesFilter, setRecipesFilter } =
     useRecipes();
+  let { state } = useLocation();
 
-  const [searchParams, setSearchParams] = useSearchParams();
   const perPage = 24;
 
   const { paginatedList, currentPage, handlePageChange } = usePagination(
@@ -26,34 +25,10 @@ function Archive() {
   };
 
   useEffect(() => {
-    // Extract individual query parameters
-    const searchQuery = searchParams.get("s");
-    const category = searchParams.get("category");
-    const area = searchParams.get("area");
-
-    // Determine the filter type and value based on query parameters
-    if (searchQuery) {
-      if (
-        recipesFilter.type !== "search" ||
-        recipesFilter.value !== searchQuery
-      ) {
-        setRecipesFilter({ type: "search", value: searchQuery });
-      }
-    } else if (category) {
-      if (
-        recipesFilter.type !== "category" ||
-        recipesFilter.value !== category
-      ) {
-        setRecipesFilter({ type: "category", value: category });
-      }
-    } else if (area) {
-      if (recipesFilter.type !== "area" || recipesFilter.value !== area) {
-        setRecipesFilter({ type: "area", value: area });
-      }
-    } else if (recipesFilter?.type === "") {
-      setRecipesFilter(DEFAULT_FILTER);
+    if (state?.type && state?.value) {
+      setRecipesFilter({ type: state.type, value: state.value });
     }
-  }, [searchParams, setRecipesFilter, recipesFilter.value, recipesFilter.type]);
+  }, [state, setRecipesFilter]);
 
   return (
     <Container className="pt-10 lg:pt-20">
@@ -84,15 +59,10 @@ function Archive() {
   );
 }
 
-const ResultInfo = ({
-  loading,
-  length = 0,
-  filterType,
-  filterValue,
-}) => {
+const ResultInfo = ({ loading, length = 0, filterType, filterValue }) => {
   const filterValueDisplay = filterValue?.split("_").join(" ");
 
-  if (loading || filterType === '') return 'loading'
+  if (loading || filterType === "") return "loading";
 
   return (
     <h1 className="mb-4">
