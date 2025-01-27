@@ -53,7 +53,7 @@ function Archive() {
     } else if (recipesFilter?.type === "") {
       setRecipesFilter(DEFAULT_FILTER);
     }
-  }, [searchParams, setRecipesFilter]);
+  }, [searchParams, setRecipesFilter, recipesFilter.value, recipesFilter.type]);
 
   return (
     <Container className="pt-10 lg:pt-20">
@@ -61,11 +61,12 @@ function Archive() {
         currentFilter={recipesFilter}
         onFilterChange={handleFilterChange}
       />
-      <h1 className="mb-4">
-        {!loading && !error
-          ? `Found ${recipes?.length} results for ${recipesFilter?.type} : ${recipesFilter?.value}`
-          : ""}
-      </h1>
+      <ResultInfo
+        loading={loading}
+        length={recipes?.length}
+        filterType={recipesFilter?.type}
+        filterValue={recipesFilter?.value}
+      />
       <CardsList
         list={paginatedList}
         error={error}
@@ -82,5 +83,22 @@ function Archive() {
     </Container>
   );
 }
+
+const ResultInfo = ({
+  loading,
+  length = 0,
+  filterType,
+  filterValue,
+}) => {
+  const filterValueDisplay = filterValue?.split("_").join(" ");
+
+  if (loading || filterType === '') return 'loading'
+
+  return (
+    <h1 className="mb-4">
+      Found {length} results for {filterType} : {filterValueDisplay}
+    </h1>
+  );
+};
 
 export default Archive;
