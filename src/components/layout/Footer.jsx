@@ -40,7 +40,7 @@ const TwoColumnFooter = () => {
                       href={item.href}
                       // target="_blank"
                       rel="noreferrer"
-                      className="leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-200"
+                      className="leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 dark:hover:text-gray-200"
                     >
                       {item.name}
                     </a>
@@ -58,7 +58,7 @@ const TwoColumnFooter = () => {
                     <div key={item.name}>
                       <a
                         href={item.href}
-                        className="leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 hover:dark:text-gray-200"
+                        className="leading-6 text-gray-700 hover:text-gray-900 dark:text-gray-600 dark:hover:text-gray-200"
                       >
                         {item.name}
                       </a>
