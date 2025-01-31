@@ -21,6 +21,12 @@ function RecipeDetail() {
 
   const recipeDetail = data?.meals?.[0];
 
+  if (pending || !data) return <Loading />;
+  if (error) return <Error message={error} />;
+
+  if (!recipeDetail)
+    return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
+
   function getIngredientsData() {
     const ingrediants = [];
 
@@ -43,11 +49,6 @@ function RecipeDetail() {
   }
 
   const ingredients = getIngredientsData(recipeDetail);
-
-  if (error) return <Error message={error} />;
-  if (pending) return <Loading />;
-  if (!recipeDetail)
-    return <p className="text-center">Recipe Doesn&apos;t Exist</p>;
 
   return (
     <Container className="flex flex-col  gap-4 mb-40 pt-10 lg:pt-20">
