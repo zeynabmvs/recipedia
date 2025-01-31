@@ -62,7 +62,7 @@ function RecipeDetail() {
       </div>
       <Instructions instructions={recipeDetail?.strInstructions} />
       <TagsList tagsList={recipeDetail?.strTags} />
-      {/* <RelatedRecipes relatedBy={recipeDetail?.strCategory} /> */}
+      <RelatedRecipes relatedBy={recipeDetail?.strCategory} />
     </Container>
   );
 }
